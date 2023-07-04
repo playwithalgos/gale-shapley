@@ -40,15 +40,25 @@
 		return bPrefs[b].indexOf(a) < bPrefs[b].indexOf(a1);
 	}
 
-	let imagesA = ["1F43C", "1F431", "1F437", "1F42E", "1F43B"];
+	let iImages = 1;
+
+	const images = [
+		[
+			["1F43C", "1F431", "1F437", "1F42E", "1F43B"],
+			["1F996", "1F438", "1F424", "1F414", "1F997"],
+		],
+		[
+			["1F43C", "1F431", "1F437", "1F42E", "1F43B"],
+			["1F3EB", "1F3DB", "1F3EC", "1F3E1", "1F3F0"],
+		],
+	];
+
 	function agentAimg(a) {
-		return `<img src='https://openmoji.org/data/color/svg/${imagesA[a]}.svg'/>`;
+		return `<img src='https://openmoji.org/data/color/svg/${images[iImages][0][a]}.svg'/>`;
 	}
 
-	let imagesB = ["1F996", "1F438", "1F424", "1F414", "1F997"];
-
 	function agentBimg(b) {
-		return `<img src='https://openmoji.org/data/color/svg/${imagesB[b]}.svg'/>`;
+		return `<img src='https://openmoji.org/data/color/svg/${images[iImages][1][b]}.svg'/>`;
 	}
 
 	function getBPartner(matching, b) {
