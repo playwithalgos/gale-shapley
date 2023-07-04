@@ -112,11 +112,13 @@
 			for (let b = 0; b < aPrefs.length; b++)
 				for (let a2 = 0; a2 < aPrefs.length; a2++)
 					for (let b2 = 0; b2 < aPrefs.length; b2++) {
-						console.log(aPrefs[a].indexOf(parseInt(b2)));
 						if (
-							aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) &&
-							aPrefs[b2].indexOf(a) < aPrefs[b2].indexOf(a2)
+							aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) && //a prefers b2 to b
+							bPrefs[b2].indexOf(a) < bPrefs[b2].indexOf(a2) //b2 prefers a to a2
 						) {
+							console.log(a, b, a2, b2)
+							console.log(aPrefs[a])
+							console.log(bPrefs[b2])
 							matching[a] = b;
 							matching[a2] = b2;
 							matching = matching;

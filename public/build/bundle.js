@@ -894,7 +894,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (138:3) {#if b >= 0}
+    // (140:3) {#if b >= 0}
     function create_if_block_1(ctx) {
     	let line;
     	let line_y__value_1;
@@ -911,7 +911,7 @@ var app = (function () {
     			attr_dev(line, "fill", "none");
     			attr_dev(line, "stroke", "red");
     			attr_dev(line, "stroke-width", "2px");
-    			add_location(line, file, 138, 4, 7280);
+    			add_location(line, file, 140, 4, 7363);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, line, anchor);
@@ -948,14 +948,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(138:3) {#if b >= 0}",
+    		source: "(140:3) {#if b >= 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (137:2) {#each matching as b, a}
+    // (139:2) {#each matching as b, a}
     function create_each_block_5(ctx) {
     	let if_block_anchor;
     	let current;
@@ -1014,14 +1014,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5.name,
     		type: "each",
-    		source: "(137:2) {#each matching as b, a}",
+    		source: "(139:2) {#each matching as b, a}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (152:3) {#if b >= 0}
+    // (154:3) {#if b >= 0}
     function create_if_block(ctx) {
     	let line;
     	let line_y__value_1;
@@ -1039,7 +1039,7 @@ var app = (function () {
     			attr_dev(line, "stroke", "red");
     			attr_dev(line, "stroke-dasharray", "4");
     			attr_dev(line, "stroke-width", "1px");
-    			add_location(line, file, 152, 4, 7536);
+    			add_location(line, file, 154, 4, 7619);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, line, anchor);
@@ -1076,14 +1076,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(152:3) {#if b >= 0}",
+    		source: "(154:3) {#if b >= 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (151:2) {#each instaMatching as b, a}
+    // (153:2) {#each instaMatching as b, a}
     function create_each_block_4(ctx) {
     	let if_block_anchor;
     	let current;
@@ -1142,14 +1142,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(151:2) {#each instaMatching as b, a}",
+    		source: "(153:2) {#each instaMatching as b, a}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (176:5) {#each aPref as b, i (b)}
+    // (178:5) {#each aPref as b, i (b)}
     function create_each_block_3(key_1, ctx) {
     	let div;
     	let t0_value = th(/*i*/ ctx[25] + 1) + "";
@@ -1181,7 +1181,7 @@ var app = (function () {
     			toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] == /*b*/ ctx[22]);
     			toggle_class(div, "unavailable", /*next*/ ctx[1][/*a*/ ctx[23]] > /*i*/ ctx[25]);
-    			add_location(div, file, 176, 6, 8012);
+    			add_location(div, file, 178, 6, 8095);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -1226,14 +1226,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(176:5) {#each aPref as b, i (b)}",
+    		source: "(178:5) {#each aPref as b, i (b)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (169:2) {#each aPrefs as aPref, a (aPref)}
+    // (171:2) {#each aPrefs as aPref, a (aPref)}
     function create_each_block_2(key_1, ctx) {
     	let div2;
     	let div0;
@@ -1275,13 +1275,13 @@ var app = (function () {
     			div1 = element("div");
     			t1 = space();
     			attr_dev(div0, "class", "pref svelte-2hxq4s");
-    			add_location(div0, file, 174, 4, 7956);
+    			add_location(div0, file, 176, 4, 8039);
     			attr_dev(div1, "class", "agent agentA svelte-2hxq4s");
     			toggle_class(div1, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] >= 0);
     			toggle_class(div1, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23]);
-    			add_location(div1, file, 190, 4, 8404);
+    			add_location(div1, file, 192, 4, 8487);
     			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
-    			add_location(div2, file, 169, 3, 7837);
+    			add_location(div2, file, 171, 3, 7920);
     			this.first = div2;
     		},
     		m: function mount(target, anchor) {
@@ -1342,14 +1342,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(169:2) {#each aPrefs as aPref, a (aPref)}",
+    		source: "(171:2) {#each aPrefs as aPref, a (aPref)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (215:5) {#each bPref as a, i (a)}
+    // (217:5) {#each bPref as a, i (a)}
     function create_each_block_1(key_1, ctx) {
     	let div;
     	let t0_value = th(/*i*/ ctx[25] + 1) + "";
@@ -1376,7 +1376,7 @@ var app = (function () {
     			? false
     			: /*bPref*/ ctx[20].indexOf(getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22])) < /*bPref*/ ctx[20].indexOf(/*a*/ ctx[23]));
 
-    			add_location(div, file, 215, 6, 8940);
+    			add_location(div, file, 217, 6, 9023);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -1415,14 +1415,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(215:5) {#each bPref as a, i (a)}",
+    		source: "(217:5) {#each bPref as a, i (a)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (203:2) {#each bPrefs as bPref, b (bPref)}
+    // (205:2) {#each bPrefs as bPref, b (bPref)}
     function create_each_block(key_1, ctx) {
     	let div2;
     	let div0;
@@ -1461,11 +1461,11 @@ var app = (function () {
     			toggle_class(div0, "happy", /*isHappy*/ ctx[7]() && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div0, "married", isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22]));
     			toggle_class(div0, "current", /*currentB*/ ctx[2] == /*b*/ ctx[22]);
-    			add_location(div0, file, 204, 4, 8670);
+    			add_location(div0, file, 206, 4, 8753);
     			attr_dev(div1, "class", "pref svelte-2hxq4s");
-    			add_location(div1, file, 213, 4, 8884);
+    			add_location(div1, file, 215, 4, 8967);
     			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
-    			add_location(div2, file, 203, 3, 8642);
+    			add_location(div2, file, 205, 3, 8725);
     			this.first = div2;
     		},
     		m: function mount(target, anchor) {
@@ -1518,7 +1518,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(203:2) {#each bPrefs as bPref, b (bPref)}",
+    		source: "(205:2) {#each bPrefs as bPref, b (bPref)}",
     		ctx
     	});
 
@@ -1630,21 +1630,21 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(button0, file, 131, 1, 7032);
-    			add_location(button1, file, 132, 1, 7073);
+    			add_location(button0, file, 133, 1, 7115);
+    			add_location(button1, file, 134, 1, 7156);
     			attr_dev(h1, "class", "svelte-2hxq4s");
-    			add_location(h1, file, 133, 1, 7138);
+    			add_location(h1, file, 135, 1, 7221);
     			attr_dev(svg, "width", 1000);
     			attr_dev(svg, "height", 1000);
     			attr_dev(svg, "viewBox", "0 0 " + 1000 + " " + 1000);
     			attr_dev(svg, "class", "svelte-2hxq4s");
-    			add_location(svg, file, 135, 1, 7172);
+    			add_location(svg, file, 137, 1, 7255);
     			attr_dev(div0, "class", "family svelte-2hxq4s");
-    			add_location(div0, file, 167, 1, 7776);
+    			add_location(div0, file, 169, 1, 7859);
     			attr_dev(div1, "class", "family svelte-2hxq4s");
-    			add_location(div1, file, 201, 1, 8581);
+    			add_location(div1, file, 203, 1, 8664);
     			attr_dev(main, "class", "svelte-2hxq4s");
-    			add_location(main, file, 130, 0, 7024);
+    			add_location(main, file, 132, 0, 7107);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1941,9 +1941,11 @@ var app = (function () {
     		reset();
 
     		for (let a = 0; a < aPrefs.length; a++) for (let b = 0; b < aPrefs.length; b++) for (let a2 = 0; a2 < aPrefs.length; a2++) for (let b2 = 0; b2 < aPrefs.length; b2++) {
-    			console.log(aPrefs[a].indexOf(parseInt(b2)));
-
-    			if (aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) && aPrefs[b2].indexOf(a) < aPrefs[b2].indexOf(a2)) {
+    			if (aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) && //a prefers b2 to b
+    			bPrefs[b2].indexOf(a) < bPrefs[b2].indexOf(a2)) {
+    				console.log(a, b, a2, b2); //b2 prefers a to a2
+    				console.log(aPrefs[a]);
+    				console.log(bPrefs[b2]);
     				$$invalidate(0, matching[a] = b, matching);
     				$$invalidate(0, matching[a2] = b2, matching);
     				$$invalidate(0, matching);
