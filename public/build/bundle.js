@@ -1,2 +1,2056 @@
-var app=function(){"use strict";function t(){}const n=t=>t;function e(t){return t()}function o(){return Object.create(null)}function r(t){t.forEach(e)}function s(t){return"function"==typeof t}function i(t,n){return t!=t?n==n:t!==n||t&&"object"==typeof t||"function"==typeof t}const l="undefined"!=typeof window;let A=l?()=>window.performance.now():()=>Date.now(),c=l?t=>requestAnimationFrame(t):t;const u=new Set;function a(t){u.forEach((n=>{n.c(t)||(u.delete(n),n.f())})),0!==u.size&&c(a)}function f(t,n){t.appendChild(n)}function d(t){if(!t)return document;const n=t.getRootNode?t.getRootNode():t.ownerDocument;return n&&n.host?n:t.ownerDocument}function h(t){const n=y("style");return function(t,n){f(t.head||t,n),n.sheet}(d(t),n),n.sheet}function g(t,n,e){t.insertBefore(n,e||null)}function m(t){t.parentNode&&t.parentNode.removeChild(t)}function p(t,n){for(let e=0;e<t.length;e+=1)t[e]&&t[e].d(n)}function y(t){return document.createElement(t)}function v(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}function E(t){return document.createTextNode(t)}function w(){return E(" ")}function k(){return E("")}function x(t,n,e,o){return t.addEventListener(n,e,o),()=>t.removeEventListener(n,e,o)}function Q(t,n,e){null==e?t.removeAttribute(n):t.getAttribute(n)!==e&&t.setAttribute(n,e)}function b(t,n,e){t.classList[e?"add":"remove"](n)}class B{constructor(t=!1){this.is_svg=!1,this.is_svg=t,this.e=this.n=null}c(t){this.h(t)}m(t,n,e=null){this.e||(this.is_svg?this.e=v(n.nodeName):this.e=y(11===n.nodeType?"TEMPLATE":n.nodeName),this.t="TEMPLATE"!==n.tagName?n:n.content,this.c(t)),this.i(e)}h(t){this.e.innerHTML=t,this.n=Array.from("TEMPLATE"===this.e.nodeName?this.e.content.childNodes:this.e.childNodes)}i(t){for(let n=0;n<this.n.length;n+=1)g(this.t,this.n[n],t)}p(t){this.d(),this.h(t),this.i(this.a)}d(){this.n.forEach(m)}}const I=new Map;let F,M=0;function D(t,n,e,o,r,s,i,l=0){const A=16.666/o;let c="{\n";for(let t=0;t<=1;t+=A){const o=n+(e-n)*s(t);c+=100*t+`%{${i(o,1-o)}}\n`}const u=c+`100% {${i(e,1-e)}}\n}`,a=`__svelte_${function(t){let n=5381,e=t.length;for(;e--;)n=(n<<5)-n^t.charCodeAt(e);return n>>>0}(u)}_${l}`,f=d(t),{stylesheet:g,rules:m}=I.get(f)||function(t,n){const e={stylesheet:h(n),rules:{}};return I.set(t,e),e}(f,t);m[a]||(m[a]=!0,g.insertRule(`@keyframes ${a} ${u}`,g.cssRules.length));const p=t.style.animation||"";return t.style.animation=`${p?`${p}, `:""}${a} ${o}ms linear ${r}ms 1 both`,M+=1,a}function S(t,n){const e=(t.style.animation||"").split(", "),o=e.filter(n?t=>t.indexOf(n)<0:t=>-1===t.indexOf("__svelte")),r=e.length-o.length;r&&(t.style.animation=o.join(", "),M-=r,M||c((()=>{M||(I.forEach((t=>{const{ownerNode:n}=t.stylesheet;n&&m(n)})),I.clear())})))}function L(t){F=t}const C=[],R=[];let U=[];const N=[],W=Promise.resolve();let Z=!1;function q(t){U.push(t)}const G=new Set;let K,$=0;function O(){if(0!==$)return;const t=F;do{try{for(;$<C.length;){const t=C[$];$++,L(t),Y(t.$$)}}catch(t){throw C.length=0,$=0,t}for(L(null),C.length=0,$=0;R.length;)R.pop()();for(let t=0;t<U.length;t+=1){const n=U[t];G.has(n)||(G.add(n),n())}U.length=0}while(C.length);for(;N.length;)N.pop()();Z=!1,G.clear(),L(t)}function Y(t){if(null!==t.fragment){t.update(),r(t.before_update);const n=t.dirty;t.dirty=[-1],t.fragment&&t.fragment.p(t.ctx,n),t.after_update.forEach(q)}}function P(t,n,e){t.dispatchEvent(function(t,n,{bubbles:e=!1,cancelable:o=!1}={}){const r=document.createEvent("CustomEvent");return r.initCustomEvent(t,e,o,n),r}(`${n?"intro":"outro"}${e}`))}const j=new Set;let T;function V(){T={r:0,c:[],p:T}}function J(){T.r||r(T.c),T=T.p}function z(t,n){t&&t.i&&(j.delete(t),t.i(n))}function H(t,n,e,o){if(t&&t.o){if(j.has(t))return;j.add(t),T.c.push((()=>{j.delete(t),o&&(e&&t.d(1),o())})),t.o(n)}else o&&o()}const X={duration:0};function _(e,o,i,l){const f={direction:"both"};let d=o(e,i,f),h=l?0:1,g=null,m=null,p=null;function y(){p&&S(e,p)}function v(t,n){const e=t.b-h;return n*=Math.abs(e),{a:h,b:t.b,d:e,duration:n,start:t.start,end:t.start+n,group:t.group}}function E(o){const{delay:s=0,duration:i=300,easing:l=n,tick:f=t,css:E}=d||X,w={start:A()+s,b:o};o||(w.group=T,T.r+=1),g||m?m=w:(E&&(y(),p=D(e,h,o,i,s,l,E)),o&&f(0,1),g=v(w,i),q((()=>P(e,o,"start"))),function(t){let n;0===u.size&&c(a),new Promise((e=>{u.add(n={c:t,f:e})}))}((t=>{if(m&&t>m.start&&(g=v(m,i),m=null,P(e,g.b,"start"),E&&(y(),p=D(e,h,g.b,g.duration,0,l,d.css))),g)if(t>=g.end)f(h=g.b,1-h),P(e,g.b,"end"),m||(g.b?y():--g.group.r||r(g.group.c)),g=null;else if(t>=g.start){const n=t-g.start;h=g.a+g.d*l(n/g.duration),f(h,1-h)}return!(!g&&!m)})))}return{run(t){s(d)?(K||(K=Promise.resolve(),K.then((()=>{K=null}))),K).then((()=>{d=d(f),E(t)})):E(t)},end(){y(),g=m=null}}}function tt(t,n){t.d(1),n.delete(t.key)}function nt(t,n,e,o,s,i,l,A,c,u,a,f){let d=t.length,h=i.length,g=d;const m={};for(;g--;)m[t[g].key]=g;const p=[],y=new Map,v=new Map,E=[];for(g=h;g--;){const t=f(s,i,g),r=e(t);let A=l.get(r);A?o&&E.push((()=>A.p(t,n))):(A=u(r,t),A.c()),y.set(r,p[g]=A),r in m&&v.set(r,Math.abs(g-m[r]))}const w=new Set,k=new Set;function x(t){z(t,1),t.m(A,a),l.set(t.key,t),a=t.first,h--}for(;d&&h;){const n=p[h-1],e=t[d-1],o=n.key,r=e.key;n===e?(a=n.first,d--,h--):y.has(r)?!l.has(o)||w.has(o)?x(n):k.has(r)?d--:v.get(o)>v.get(r)?(k.add(o),x(n)):(w.add(r),d--):(c(e,l),d--)}for(;d--;){const n=t[d];y.has(n.key)||c(n,l)}for(;h;)x(p[h-1]);return r(E),p}function et(t,n){const e=t.$$;null!==e.fragment&&(!function(t){const n=[],e=[];U.forEach((o=>-1===t.indexOf(o)?n.push(o):e.push(o))),e.forEach((t=>t())),U=n}(e.after_update),r(e.on_destroy),e.fragment&&e.fragment.d(n),e.on_destroy=e.fragment=null,e.ctx=[])}function ot(t,n){-1===t.$$.dirty[0]&&(C.push(t),Z||(Z=!0,W.then(O)),t.$$.dirty.fill(0)),t.$$.dirty[n/31|0]|=1<<n%31}function rt(n,i,l,A,c,u,a,f=[-1]){const d=F;L(n);const h=n.$$={fragment:null,ctx:[],props:u,update:t,not_equal:c,bound:o(),on_mount:[],on_destroy:[],on_disconnect:[],before_update:[],after_update:[],context:new Map(i.context||(d?d.$$.context:[])),callbacks:o(),dirty:f,skip_bound:!1,root:i.target||d.$$.root};a&&a(h.root);let g=!1;if(h.ctx=l?l(n,i.props||{},((t,e,...o)=>{const r=o.length?o[0]:e;return h.ctx&&c(h.ctx[t],h.ctx[t]=r)&&(!h.skip_bound&&h.bound[t]&&h.bound[t](r),g&&ot(n,t)),e})):[],h.update(),g=!0,r(h.before_update),h.fragment=!!A&&A(h.ctx),i.target){if(i.hydrate){const t=function(t){return Array.from(t.childNodes)}(i.target);h.fragment&&h.fragment.l(t),t.forEach(m)}else h.fragment&&h.fragment.c();i.intro&&z(n.$$.fragment),function(t,n,o,i){const{fragment:l,after_update:A}=t.$$;l&&l.m(n,o),i||q((()=>{const n=t.$$.on_mount.map(e).filter(s);t.$$.on_destroy?t.$$.on_destroy.push(...n):r(n),t.$$.on_mount=[]})),A.forEach(q)}(n,i.target,i.anchor,i.customElement),O()}L(d)}class st{$destroy(){et(this,1),this.$destroy=t}$on(n,e){if(!s(e))return t;const o=this.$$.callbacks[n]||(this.$$.callbacks[n]=[]);return o.push(e),()=>{const t=o.indexOf(e);-1!==t&&o.splice(t,1)}}$set(t){var n;this.$$set&&(n=t,0!==Object.keys(n).length)&&(this.$$.skip_bound=!0,this.$$set(t),this.$$.skip_bound=!1)}}function it(t){return t<.5?4*t*t*t:.5*Math.pow(2*t-2,3)+1}function lt(t,{delay:n=0,speed:e,duration:o,easing:r=it}={}){let s=t.getTotalLength();const i=getComputedStyle(t);return"butt"!==i.strokeLinecap&&(s+=parseInt(i.strokeWidth)),void 0===o?o=void 0===e?800:s/e:"function"==typeof o&&(o=o(s)),{delay:n,duration:o,easing:r,css:(t,n)=>`\n\t\t\tstroke-dasharray: ${s};\n\t\t\tstroke-dashoffset: ${n*s};\n\t\t`}}function At(t,n,e){const o=t.slice();return o[19]=n[e],o[21]=e,o}function ct(t,n,e){const o=t.slice();return o[22]=n[e],o[24]=e,o}function ut(t,n,e){const o=t.slice();return o[25]=n[e],o[22]=e,o}function at(t,n,e){const o=t.slice();return o[21]=n[e],o[24]=e,o}function ft(t,n,e){const o=t.slice();return o[21]=n[e],o[22]=e,o}function dt(t,n,e){const o=t.slice();return o[21]=n[e],o[22]=e,o}function ht(t){let n,e,o,r;return{c(){n=v("line"),Q(n,"x1","300"),Q(n,"x2","370"),Q(n,"y1",64+70*t[22]),Q(n,"y2",e=64+70*t[21]),Q(n,"fill","none"),Q(n,"stroke","red"),Q(n,"stroke-width","2px")},m(t,e){g(t,n,e),r=!0},p(t,o){(!r||1&o&&e!==(e=64+70*t[21]))&&Q(n,"y2",e)},i(t){r||(q((()=>{r&&(o||(o=_(n,lt,{duration:500},!0)),o.run(1))})),r=!0)},o(t){o||(o=_(n,lt,{duration:500},!1)),o.run(0),r=!1},d(t){t&&m(n),t&&o&&o.end()}}}function gt(t){let n,e,o=t[21]>=0&&ht(t);return{c(){o&&o.c(),n=k()},m(t,r){o&&o.m(t,r),g(t,n,r),e=!0},p(t,e){t[21]>=0?o?(o.p(t,e),1&e&&z(o,1)):(o=ht(t),o.c(),z(o,1),o.m(n.parentNode,n)):o&&(V(),H(o,1,1,(()=>{o=null})),J())},i(t){e||(z(o),e=!0)},o(t){H(o),e=!1},d(t){o&&o.d(t),t&&m(n)}}}function mt(t){let n,e,o,r;return{c(){n=v("line"),Q(n,"x1","300"),Q(n,"x2","370"),Q(n,"y1",64+70*t[22]),Q(n,"y2",e=64+70*t[21]),Q(n,"fill","none"),Q(n,"stroke","red"),Q(n,"stroke-dasharray","4"),Q(n,"stroke-width","1px")},m(t,e){g(t,n,e),r=!0},p(t,o){(!r||16&o&&e!==(e=64+70*t[21]))&&Q(n,"y2",e)},i(t){r||(q((()=>{r&&(o||(o=_(n,lt,{duration:500},!0)),o.run(1))})),r=!0)},o(t){o||(o=_(n,lt,{duration:500},!1)),o.run(0),r=!1},d(t){t&&m(n),t&&o&&o.end()}}}function pt(t){let n,e,o=t[21]>=0&&mt(t);return{c(){o&&o.c(),n=k()},m(t,r){o&&o.m(t,r),g(t,n,r),e=!0},p(t,e){t[21]>=0?o?(o.p(t,e),16&e&&z(o,1)):(o=mt(t),o.c(),z(o,1),o.m(n.parentNode,n)):o&&(V(),H(o,1,1,(()=>{o=null})),J())},i(t){e||(z(o),e=!0)},o(t){H(o),e=!1},d(t){o&&o.d(t),t&&m(n)}}}function yt(t,n){let e,o,s,i,l,A,c=It(n[24]+1)+"",u=n[9](n[21])+"";function a(){return n[13](n[22],n[21])}function d(){return n[14](n[21])}return{key:t,first:null,c(){e=y("div"),o=E(c),s=new B(!1),i=w(),s.a=i,Q(e,"class","agent agentB svelte-2hxq4s"),b(e,"current",n[3]==n[22]&&n[2]==n[21]),b(e,"married",n[0][n[22]]==n[21]),b(e,"unavailable",n[1][n[22]]>n[24]),this.first=e},m(t,r){g(t,e,r),f(e,o),s.m(u,e),f(e,i),l||(A=[x(e,"click",a),x(e,"mouseenter",d),x(e,"mouseleave",n[15])],l=!0)},p(t,o){n=t,44&o&&b(e,"current",n[3]==n[22]&&n[2]==n[21]),33&o&&b(e,"married",n[0][n[22]]==n[21]),34&o&&b(e,"unavailable",n[1][n[22]]>n[24])},d(t){t&&m(e),l=!1,r(A)}}}function vt(t,n){let e,o,s,i,l,A,c,u=[],a=new Map,d=n[8](n[22])+"",h=n[25];const p=t=>t[21];for(let t=0;t<h.length;t+=1){let e=at(n,h,t),o=p(e);a.set(o,u[t]=yt(o,e))}function v(){return n[16](n[22])}return{key:t,first:null,c(){e=y("div"),o=y("div");for(let t=0;t<u.length;t+=1)u[t].c();s=E("\n\t\t\t\to o o\n\t\t\t\t"),i=y("div"),l=w(),Q(o,"class","pref svelte-2hxq4s"),Q(i,"class","agent agentA svelte-2hxq4s"),b(i,"married",n[0][n[22]]>=0),b(i,"current",n[3]==n[22]),Q(e,"class","agentPref svelte-2hxq4s"),this.first=e},m(t,r){g(t,e,r),f(e,o);for(let t=0;t<u.length;t+=1)u[t]&&u[t].m(o,null);f(e,s),f(e,i),i.innerHTML=d,f(e,l),A||(c=[x(e,"mouseenter",v),x(e,"mouseleave",n[17])],A=!0)},p(t,e){n=t,1583&e&&(h=n[25],u=nt(u,e,p,1,n,h,a,o,tt,yt,null,at)),33&e&&b(i,"married",n[0][n[22]]>=0),40&e&&b(i,"current",n[3]==n[22])},d(t){t&&m(e);for(let t=0;t<u.length;t+=1)u[t].d();A=!1,r(c)}}}function Et(t,n){let e,o,r,s,i=It(n[24]+1)+"",l=n[8](n[22])+"";return{key:t,first:null,c(){e=y("div"),o=E(i),r=new B(!1),s=w(),r.a=s,Q(e,"class","agent agentA svelte-2hxq4s"),b(e,"happy",n[7]()&&n[3]==n[22]&&n[2]==n[21]),b(e,"current",n[3]==n[22]&&n[2]==n[21]),b(e,"married",bt(n[0],n[21])==n[22]),b(e,"unavailable",!!Bt(n[0],n[21])&&n[19].indexOf(bt(n[0],n[21]))<n[19].indexOf(n[22])),this.first=e},m(t,n){g(t,e,n),f(e,o),r.m(l,e),f(e,s)},p(t,o){n=t,204&o&&b(e,"happy",n[7]()&&n[3]==n[22]&&n[2]==n[21]),76&o&&b(e,"current",n[3]==n[22]&&n[2]==n[21]),65&o&&b(e,"married",bt(n[0],n[21])==n[22]),65&o&&b(e,"unavailable",!!Bt(n[0],n[21])&&n[19].indexOf(bt(n[0],n[21]))<n[19].indexOf(n[22]))},d(t){t&&m(e)}}}function wt(t,n){let e,o,r,s,i,l=n[9](n[21])+"",A=[],c=new Map,u=n[19];const a=t=>t[22];for(let t=0;t<u.length;t+=1){let e=ct(n,u,t),o=a(e);c.set(o,A[t]=Et(o,e))}return{key:t,first:null,c(){e=y("div"),o=y("div"),r=E("\n\t\t\t\to o o\n\t\t\t\t"),s=y("div");for(let t=0;t<A.length;t+=1)A[t].c();i=w(),Q(o,"class","agent agentB svelte-2hxq4s"),b(o,"happy",n[7]()&&n[2]==n[21]),b(o,"married",Bt(n[0],n[21])),b(o,"current",n[2]==n[21]),Q(s,"class","pref svelte-2hxq4s"),Q(e,"class","agentPref svelte-2hxq4s"),this.first=e},m(t,n){g(t,e,n),f(e,o),o.innerHTML=l,f(e,r),f(e,s);for(let t=0;t<A.length;t+=1)A[t]&&A[t].m(s,null);f(e,i)},p(t,e){n=t,196&e&&b(o,"happy",n[7]()&&n[2]==n[21]),65&e&&b(o,"married",Bt(n[0],n[21])),68&e&&b(o,"current",n[2]==n[21]),461&e&&(u=n[19],A=nt(A,e,a,1,n,u,c,s,tt,Et,null,ct))},d(t){t&&m(e);for(let t=0;t<A.length;t+=1)A[t].d()}}}function kt(t){let n,e,o,s,i,l,A,c,u,a,d,h,E,b,B,I,F=[],M=new Map,D=[],S=new Map,L=t[0],C=[];for(let n=0;n<L.length;n+=1)C[n]=gt(dt(t,L,n));const R=t=>H(C[t],1,1,(()=>{C[t]=null}));let U=t[4],N=[];for(let n=0;n<U.length;n+=1)N[n]=pt(ft(t,U,n));const W=t=>H(N[t],1,1,(()=>{N[t]=null}));let Z=t[5];const q=t=>t[25];for(let n=0;n<Z.length;n+=1){let e=ut(t,Z,n),o=q(e);M.set(o,F[n]=vt(o,e))}let G=t[6];const K=t=>t[19];for(let n=0;n<G.length;n+=1){let e=At(t,G,n),o=K(e);S.set(o,D[n]=wt(o,e))}return{c(){n=y("main"),e=y("button"),e.textContent="Reset",o=w(),s=y("button"),s.textContent="Show an instability",i=w(),l=y("h1"),l.textContent="Gale-Shapley algorithm",A=w(),c=v("svg");for(let t=0;t<C.length;t+=1)C[t].c();u=k();for(let t=0;t<N.length;t+=1)N[t].c();a=w(),d=y("div");for(let t=0;t<F.length;t+=1)F[t].c();h=w(),E=y("div");for(let t=0;t<D.length;t+=1)D[t].c();Q(l,"class","svelte-2hxq4s"),Q(c,"width",1e3),Q(c,"height",1e3),Q(c,"viewBox","0 0 1000 1000"),Q(c,"class","svelte-2hxq4s"),Q(d,"class","family svelte-2hxq4s"),Q(E,"class","family svelte-2hxq4s"),Q(n,"class","svelte-2hxq4s")},m(r,m){g(r,n,m),f(n,e),f(n,o),f(n,s),f(n,i),f(n,l),f(n,A),f(n,c);for(let t=0;t<C.length;t+=1)C[t]&&C[t].m(c,null);f(c,u);for(let t=0;t<N.length;t+=1)N[t]&&N[t].m(c,null);f(n,a),f(n,d);for(let t=0;t<F.length;t+=1)F[t]&&F[t].m(d,null);f(n,h),f(n,E);for(let t=0;t<D.length;t+=1)D[t]&&D[t].m(E,null);b=!0,B||(I=[x(e,"click",t[11]),x(s,"click",t[12])],B=!0)},p(t,[n]){if(1&n){let e;for(L=t[0],e=0;e<L.length;e+=1){const o=dt(t,L,e);C[e]?(C[e].p(o,n),z(C[e],1)):(C[e]=gt(o),C[e].c(),z(C[e],1),C[e].m(c,u))}for(V(),e=L.length;e<C.length;e+=1)R(e);J()}if(16&n){let e;for(U=t[4],e=0;e<U.length;e+=1){const o=ft(t,U,e);N[e]?(N[e].p(o,n),z(N[e],1)):(N[e]=pt(o),N[e].c(),z(N[e],1),N[e].m(c,null))}for(V(),e=U.length;e<N.length;e+=1)W(e);J()}1839&n&&(Z=t[5],F=nt(F,n,q,1,t,Z,M,d,tt,vt,null,ut)),973&n&&(G=t[6],D=nt(D,n,K,1,t,G,S,E,tt,wt,null,At))},i(t){if(!b){for(let t=0;t<L.length;t+=1)z(C[t]);for(let t=0;t<U.length;t+=1)z(N[t]);b=!0}},o(t){C=C.filter(Boolean);for(let t=0;t<C.length;t+=1)H(C[t]);N=N.filter(Boolean);for(let t=0;t<N.length;t+=1)H(N[t]);b=!1},d(t){t&&m(n),p(C,t),p(N,t);for(let t=0;t<F.length;t+=1)F[t].d();for(let t=0;t<D.length;t+=1)D[t].d();B=!1,r(I)}}}function xt(t){const n=new Array(t).fill(0).map(((t,n)=>n));for(let e=t-1;e>=0;e--){const t=Math.floor(Math.random()*e);[n[e],n[t]]=[n[t],n[e]]}return console.log(n),n}function Qt(){new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=").play()}function bt(t,n){return t.indexOf(n)}function Bt(t,n){return bt(t,n)>=0}function It(t){return 1==t?"1st":2==t?"2nd":t+"th"}function Ft(t,n,e){let o=new Array(5).fill(0).map((()=>xt(5))),r=new Array(5).fill(0).map((()=>xt(5)));Qt();let s=new Array(5).fill(-1),i=new Array(5).fill(0),l=-1,A=-1,c=[];const u=[[["1F43C","1F431","1F437","1F42E","1F43B"],["1F996","1F438","1F424","1F414","1F997"]],[["1F43C","1F431","1F437","1F42E","1F43B"],["1F3EB","1F3DB","1F3EC","1F3E1","1F3F0"]]];function a(t,n){if(function(t,n){return-1!=t[n]}(s,t)||n!=o[t][i[t]])return console.log(s[t]),void Qt();e(1,i[t]++,i);const l=bt(s,n);-1==l?e(0,s[t]=n,s):r[n].indexOf(t)<r[n].indexOf(l)&&(e(0,s[t]=n,s),e(0,s[l]=-1,s)),e(0,s),e(1,i)}function f(){e(0,s=new Array(5).fill(-1)),e(1,i=new Array(5).fill(0)),e(2,l=-1),e(3,A=-1),e(4,c=[])}f();return[s,i,l,A,c,o,r,function(){if(A<0)return!1;if(l<0)return!1;const t=A,n=l,e=bt(s,n);return-1==e||r[n].indexOf(t)<r[n].indexOf(e)},function(t){return`<img src='https://openmoji.org/data/color/svg/${u[1][0][t]}.svg'/>`},function(t){return`<img src='https://openmoji.org/data/color/svg/${u[1][1][t]}.svg'/>`},a,f,function(){f();for(let t=0;t<o.length;t++)for(let n=0;n<o.length;n++)for(let r=0;r<o.length;r++)for(let i=0;i<o.length;i++)if(console.log(o[t].indexOf(parseInt(i))),o[t].indexOf(i)<o[t].indexOf(n)&&o[i].indexOf(t)<o[i].indexOf(r))return e(0,s[t]=n,s),e(0,s[r]=i,s),e(0,s),void e(4,c[t]=i,c)},(t,n)=>a(t,n),t=>e(2,l=t),()=>e(2,l=-1),t=>e(3,A=t),()=>e(3,A=-1)]}return new class extends st{constructor(t){super(),rt(this,t,Ft,kt,i,{})}}({target:document.body,props:{name:"world"}})}();
+
+(function(l, r) { if (!l || l.getElementById('livereloadscript')) return; r = l.createElement('script'); r.async = 1; r.src = '//' + (self.location.host || 'localhost').split(':')[0] + ':35730/livereload.js?snipver=1'; r.id = 'livereloadscript'; l.getElementsByTagName('head')[0].appendChild(r) })(self.document);
+var app = (function () {
+    'use strict';
+
+    function noop() { }
+    const identity = x => x;
+    function add_location(element, file, line, column, char) {
+        element.__svelte_meta = {
+            loc: { file, line, column, char }
+        };
+    }
+    function run(fn) {
+        return fn();
+    }
+    function blank_object() {
+        return Object.create(null);
+    }
+    function run_all(fns) {
+        fns.forEach(run);
+    }
+    function is_function(thing) {
+        return typeof thing === 'function';
+    }
+    function safe_not_equal(a, b) {
+        return a != a ? b == b : a !== b || ((a && typeof a === 'object') || typeof a === 'function');
+    }
+    function is_empty(obj) {
+        return Object.keys(obj).length === 0;
+    }
+
+    const is_client = typeof window !== 'undefined';
+    let now = is_client
+        ? () => window.performance.now()
+        : () => Date.now();
+    let raf = is_client ? cb => requestAnimationFrame(cb) : noop;
+
+    const tasks = new Set();
+    function run_tasks(now) {
+        tasks.forEach(task => {
+            if (!task.c(now)) {
+                tasks.delete(task);
+                task.f();
+            }
+        });
+        if (tasks.size !== 0)
+            raf(run_tasks);
+    }
+    /**
+     * Creates a new task that runs on each raf frame
+     * until it returns a falsy value or is aborted
+     */
+    function loop(callback) {
+        let task;
+        if (tasks.size === 0)
+            raf(run_tasks);
+        return {
+            promise: new Promise(fulfill => {
+                tasks.add(task = { c: callback, f: fulfill });
+            }),
+            abort() {
+                tasks.delete(task);
+            }
+        };
+    }
+
+    const globals = (typeof window !== 'undefined'
+        ? window
+        : typeof globalThis !== 'undefined'
+            ? globalThis
+            : global);
+    function append(target, node) {
+        target.appendChild(node);
+    }
+    function get_root_for_style(node) {
+        if (!node)
+            return document;
+        const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+        if (root && root.host) {
+            return root;
+        }
+        return node.ownerDocument;
+    }
+    function append_empty_stylesheet(node) {
+        const style_element = element('style');
+        append_stylesheet(get_root_for_style(node), style_element);
+        return style_element.sheet;
+    }
+    function append_stylesheet(node, style) {
+        append(node.head || node, style);
+        return style.sheet;
+    }
+    function insert(target, node, anchor) {
+        target.insertBefore(node, anchor || null);
+    }
+    function detach(node) {
+        if (node.parentNode) {
+            node.parentNode.removeChild(node);
+        }
+    }
+    function destroy_each(iterations, detaching) {
+        for (let i = 0; i < iterations.length; i += 1) {
+            if (iterations[i])
+                iterations[i].d(detaching);
+        }
+    }
+    function element(name) {
+        return document.createElement(name);
+    }
+    function svg_element(name) {
+        return document.createElementNS('http://www.w3.org/2000/svg', name);
+    }
+    function text(data) {
+        return document.createTextNode(data);
+    }
+    function space() {
+        return text(' ');
+    }
+    function empty() {
+        return text('');
+    }
+    function listen(node, event, handler, options) {
+        node.addEventListener(event, handler, options);
+        return () => node.removeEventListener(event, handler, options);
+    }
+    function attr(node, attribute, value) {
+        if (value == null)
+            node.removeAttribute(attribute);
+        else if (node.getAttribute(attribute) !== value)
+            node.setAttribute(attribute, value);
+    }
+    function children(element) {
+        return Array.from(element.childNodes);
+    }
+    function toggle_class(element, name, toggle) {
+        element.classList[toggle ? 'add' : 'remove'](name);
+    }
+    function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
+        const e = document.createEvent('CustomEvent');
+        e.initCustomEvent(type, bubbles, cancelable, detail);
+        return e;
+    }
+    class HtmlTag {
+        constructor(is_svg = false) {
+            this.is_svg = false;
+            this.is_svg = is_svg;
+            this.e = this.n = null;
+        }
+        c(html) {
+            this.h(html);
+        }
+        m(html, target, anchor = null) {
+            if (!this.e) {
+                if (this.is_svg)
+                    this.e = svg_element(target.nodeName);
+                /** #7364  target for <template> may be provided as #document-fragment(11) */
+                else
+                    this.e = element((target.nodeType === 11 ? 'TEMPLATE' : target.nodeName));
+                this.t = target.tagName !== 'TEMPLATE' ? target : target.content;
+                this.c(html);
+            }
+            this.i(anchor);
+        }
+        h(html) {
+            this.e.innerHTML = html;
+            this.n = Array.from(this.e.nodeName === 'TEMPLATE' ? this.e.content.childNodes : this.e.childNodes);
+        }
+        i(anchor) {
+            for (let i = 0; i < this.n.length; i += 1) {
+                insert(this.t, this.n[i], anchor);
+            }
+        }
+        p(html) {
+            this.d();
+            this.h(html);
+            this.i(this.a);
+        }
+        d() {
+            this.n.forEach(detach);
+        }
+    }
+
+    // we need to store the information for multiple documents because a Svelte application could also contain iframes
+    // https://github.com/sveltejs/svelte/issues/3624
+    const managed_styles = new Map();
+    let active = 0;
+    // https://github.com/darkskyapp/string-hash/blob/master/index.js
+    function hash(str) {
+        let hash = 5381;
+        let i = str.length;
+        while (i--)
+            hash = ((hash << 5) - hash) ^ str.charCodeAt(i);
+        return hash >>> 0;
+    }
+    function create_style_information(doc, node) {
+        const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+        managed_styles.set(doc, info);
+        return info;
+    }
+    function create_rule(node, a, b, duration, delay, ease, fn, uid = 0) {
+        const step = 16.666 / duration;
+        let keyframes = '{\n';
+        for (let p = 0; p <= 1; p += step) {
+            const t = a + (b - a) * ease(p);
+            keyframes += p * 100 + `%{${fn(t, 1 - t)}}\n`;
+        }
+        const rule = keyframes + `100% {${fn(b, 1 - b)}}\n}`;
+        const name = `__svelte_${hash(rule)}_${uid}`;
+        const doc = get_root_for_style(node);
+        const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+        if (!rules[name]) {
+            rules[name] = true;
+            stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+        }
+        const animation = node.style.animation || '';
+        node.style.animation = `${animation ? `${animation}, ` : ''}${name} ${duration}ms linear ${delay}ms 1 both`;
+        active += 1;
+        return name;
+    }
+    function delete_rule(node, name) {
+        const previous = (node.style.animation || '').split(', ');
+        const next = previous.filter(name
+            ? anim => anim.indexOf(name) < 0 // remove specific animation
+            : anim => anim.indexOf('__svelte') === -1 // remove all Svelte animations
+        );
+        const deleted = previous.length - next.length;
+        if (deleted) {
+            node.style.animation = next.join(', ');
+            active -= deleted;
+            if (!active)
+                clear_rules();
+        }
+    }
+    function clear_rules() {
+        raf(() => {
+            if (active)
+                return;
+            managed_styles.forEach(info => {
+                const { ownerNode } = info.stylesheet;
+                // there is no ownerNode if it runs on jsdom.
+                if (ownerNode)
+                    detach(ownerNode);
+            });
+            managed_styles.clear();
+        });
+    }
+
+    let current_component;
+    function set_current_component(component) {
+        current_component = component;
+    }
+
+    const dirty_components = [];
+    const binding_callbacks = [];
+    let render_callbacks = [];
+    const flush_callbacks = [];
+    const resolved_promise = /* @__PURE__ */ Promise.resolve();
+    let update_scheduled = false;
+    function schedule_update() {
+        if (!update_scheduled) {
+            update_scheduled = true;
+            resolved_promise.then(flush);
+        }
+    }
+    function add_render_callback(fn) {
+        render_callbacks.push(fn);
+    }
+    // flush() calls callbacks in this order:
+    // 1. All beforeUpdate callbacks, in order: parents before children
+    // 2. All bind:this callbacks, in reverse order: children before parents.
+    // 3. All afterUpdate callbacks, in order: parents before children. EXCEPT
+    //    for afterUpdates called during the initial onMount, which are called in
+    //    reverse order: children before parents.
+    // Since callbacks might update component values, which could trigger another
+    // call to flush(), the following steps guard against this:
+    // 1. During beforeUpdate, any updated components will be added to the
+    //    dirty_components array and will cause a reentrant call to flush(). Because
+    //    the flush index is kept outside the function, the reentrant call will pick
+    //    up where the earlier call left off and go through all dirty components. The
+    //    current_component value is saved and restored so that the reentrant call will
+    //    not interfere with the "parent" flush() call.
+    // 2. bind:this callbacks cannot trigger new flush() calls.
+    // 3. During afterUpdate, any updated components will NOT have their afterUpdate
+    //    callback called a second time; the seen_callbacks set, outside the flush()
+    //    function, guarantees this behavior.
+    const seen_callbacks = new Set();
+    let flushidx = 0; // Do *not* move this inside the flush() function
+    function flush() {
+        // Do not reenter flush while dirty components are updated, as this can
+        // result in an infinite loop. Instead, let the inner flush handle it.
+        // Reentrancy is ok afterwards for bindings etc.
+        if (flushidx !== 0) {
+            return;
+        }
+        const saved_component = current_component;
+        do {
+            // first, call beforeUpdate functions
+            // and update components
+            try {
+                while (flushidx < dirty_components.length) {
+                    const component = dirty_components[flushidx];
+                    flushidx++;
+                    set_current_component(component);
+                    update(component.$$);
+                }
+            }
+            catch (e) {
+                // reset dirty state to not end up in a deadlocked state and then rethrow
+                dirty_components.length = 0;
+                flushidx = 0;
+                throw e;
+            }
+            set_current_component(null);
+            dirty_components.length = 0;
+            flushidx = 0;
+            while (binding_callbacks.length)
+                binding_callbacks.pop()();
+            // then, once components are updated, call
+            // afterUpdate functions. This may cause
+            // subsequent updates...
+            for (let i = 0; i < render_callbacks.length; i += 1) {
+                const callback = render_callbacks[i];
+                if (!seen_callbacks.has(callback)) {
+                    // ...so guard against infinite loops
+                    seen_callbacks.add(callback);
+                    callback();
+                }
+            }
+            render_callbacks.length = 0;
+        } while (dirty_components.length);
+        while (flush_callbacks.length) {
+            flush_callbacks.pop()();
+        }
+        update_scheduled = false;
+        seen_callbacks.clear();
+        set_current_component(saved_component);
+    }
+    function update($$) {
+        if ($$.fragment !== null) {
+            $$.update();
+            run_all($$.before_update);
+            const dirty = $$.dirty;
+            $$.dirty = [-1];
+            $$.fragment && $$.fragment.p($$.ctx, dirty);
+            $$.after_update.forEach(add_render_callback);
+        }
+    }
+    /**
+     * Useful for example to execute remaining `afterUpdate` callbacks before executing `destroy`.
+     */
+    function flush_render_callbacks(fns) {
+        const filtered = [];
+        const targets = [];
+        render_callbacks.forEach((c) => fns.indexOf(c) === -1 ? filtered.push(c) : targets.push(c));
+        targets.forEach((c) => c());
+        render_callbacks = filtered;
+    }
+
+    let promise;
+    function wait() {
+        if (!promise) {
+            promise = Promise.resolve();
+            promise.then(() => {
+                promise = null;
+            });
+        }
+        return promise;
+    }
+    function dispatch(node, direction, kind) {
+        node.dispatchEvent(custom_event(`${direction ? 'intro' : 'outro'}${kind}`));
+    }
+    const outroing = new Set();
+    let outros;
+    function group_outros() {
+        outros = {
+            r: 0,
+            c: [],
+            p: outros // parent group
+        };
+    }
+    function check_outros() {
+        if (!outros.r) {
+            run_all(outros.c);
+        }
+        outros = outros.p;
+    }
+    function transition_in(block, local) {
+        if (block && block.i) {
+            outroing.delete(block);
+            block.i(local);
+        }
+    }
+    function transition_out(block, local, detach, callback) {
+        if (block && block.o) {
+            if (outroing.has(block))
+                return;
+            outroing.add(block);
+            outros.c.push(() => {
+                outroing.delete(block);
+                if (callback) {
+                    if (detach)
+                        block.d(1);
+                    callback();
+                }
+            });
+            block.o(local);
+        }
+        else if (callback) {
+            callback();
+        }
+    }
+    const null_transition = { duration: 0 };
+    function create_bidirectional_transition(node, fn, params, intro) {
+        const options = { direction: 'both' };
+        let config = fn(node, params, options);
+        let t = intro ? 0 : 1;
+        let running_program = null;
+        let pending_program = null;
+        let animation_name = null;
+        function clear_animation() {
+            if (animation_name)
+                delete_rule(node, animation_name);
+        }
+        function init(program, duration) {
+            const d = (program.b - t);
+            duration *= Math.abs(d);
+            return {
+                a: t,
+                b: program.b,
+                d,
+                duration,
+                start: program.start,
+                end: program.start + duration,
+                group: program.group
+            };
+        }
+        function go(b) {
+            const { delay = 0, duration = 300, easing = identity, tick = noop, css } = config || null_transition;
+            const program = {
+                start: now() + delay,
+                b
+            };
+            if (!b) {
+                // @ts-ignore todo: improve typings
+                program.group = outros;
+                outros.r += 1;
+            }
+            if (running_program || pending_program) {
+                pending_program = program;
+            }
+            else {
+                // if this is an intro, and there's a delay, we need to do
+                // an initial tick and/or apply CSS animation immediately
+                if (css) {
+                    clear_animation();
+                    animation_name = create_rule(node, t, b, duration, delay, easing, css);
+                }
+                if (b)
+                    tick(0, 1);
+                running_program = init(program, duration);
+                add_render_callback(() => dispatch(node, b, 'start'));
+                loop(now => {
+                    if (pending_program && now > pending_program.start) {
+                        running_program = init(pending_program, duration);
+                        pending_program = null;
+                        dispatch(node, running_program.b, 'start');
+                        if (css) {
+                            clear_animation();
+                            animation_name = create_rule(node, t, running_program.b, running_program.duration, 0, easing, config.css);
+                        }
+                    }
+                    if (running_program) {
+                        if (now >= running_program.end) {
+                            tick(t = running_program.b, 1 - t);
+                            dispatch(node, running_program.b, 'end');
+                            if (!pending_program) {
+                                // we're done
+                                if (running_program.b) {
+                                    // intro — we can tidy up immediately
+                                    clear_animation();
+                                }
+                                else {
+                                    // outro — needs to be coordinated
+                                    if (!--running_program.group.r)
+                                        run_all(running_program.group.c);
+                                }
+                            }
+                            running_program = null;
+                        }
+                        else if (now >= running_program.start) {
+                            const p = now - running_program.start;
+                            t = running_program.a + running_program.d * easing(p / running_program.duration);
+                            tick(t, 1 - t);
+                        }
+                    }
+                    return !!(running_program || pending_program);
+                });
+            }
+        }
+        return {
+            run(b) {
+                if (is_function(config)) {
+                    wait().then(() => {
+                        // @ts-ignore
+                        config = config(options);
+                        go(b);
+                    });
+                }
+                else {
+                    go(b);
+                }
+            },
+            end() {
+                clear_animation();
+                running_program = pending_program = null;
+            }
+        };
+    }
+
+    function destroy_block(block, lookup) {
+        block.d(1);
+        lookup.delete(block.key);
+    }
+    function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy, create_each_block, next, get_context) {
+        let o = old_blocks.length;
+        let n = list.length;
+        let i = o;
+        const old_indexes = {};
+        while (i--)
+            old_indexes[old_blocks[i].key] = i;
+        const new_blocks = [];
+        const new_lookup = new Map();
+        const deltas = new Map();
+        const updates = [];
+        i = n;
+        while (i--) {
+            const child_ctx = get_context(ctx, list, i);
+            const key = get_key(child_ctx);
+            let block = lookup.get(key);
+            if (!block) {
+                block = create_each_block(key, child_ctx);
+                block.c();
+            }
+            else if (dynamic) {
+                // defer updates until all the DOM shuffling is done
+                updates.push(() => block.p(child_ctx, dirty));
+            }
+            new_lookup.set(key, new_blocks[i] = block);
+            if (key in old_indexes)
+                deltas.set(key, Math.abs(i - old_indexes[key]));
+        }
+        const will_move = new Set();
+        const did_move = new Set();
+        function insert(block) {
+            transition_in(block, 1);
+            block.m(node, next);
+            lookup.set(block.key, block);
+            next = block.first;
+            n--;
+        }
+        while (o && n) {
+            const new_block = new_blocks[n - 1];
+            const old_block = old_blocks[o - 1];
+            const new_key = new_block.key;
+            const old_key = old_block.key;
+            if (new_block === old_block) {
+                // do nothing
+                next = new_block.first;
+                o--;
+                n--;
+            }
+            else if (!new_lookup.has(old_key)) {
+                // remove old block
+                destroy(old_block, lookup);
+                o--;
+            }
+            else if (!lookup.has(new_key) || will_move.has(new_key)) {
+                insert(new_block);
+            }
+            else if (did_move.has(old_key)) {
+                o--;
+            }
+            else if (deltas.get(new_key) > deltas.get(old_key)) {
+                did_move.add(new_key);
+                insert(new_block);
+            }
+            else {
+                will_move.add(old_key);
+                o--;
+            }
+        }
+        while (o--) {
+            const old_block = old_blocks[o];
+            if (!new_lookup.has(old_block.key))
+                destroy(old_block, lookup);
+        }
+        while (n)
+            insert(new_blocks[n - 1]);
+        run_all(updates);
+        return new_blocks;
+    }
+    function validate_each_keys(ctx, list, get_context, get_key) {
+        const keys = new Set();
+        for (let i = 0; i < list.length; i++) {
+            const key = get_key(get_context(ctx, list, i));
+            if (keys.has(key)) {
+                throw new Error('Cannot have duplicate keys in a keyed each');
+            }
+            keys.add(key);
+        }
+    }
+    function mount_component(component, target, anchor, customElement) {
+        const { fragment, after_update } = component.$$;
+        fragment && fragment.m(target, anchor);
+        if (!customElement) {
+            // onMount happens before the initial afterUpdate
+            add_render_callback(() => {
+                const new_on_destroy = component.$$.on_mount.map(run).filter(is_function);
+                // if the component was destroyed immediately
+                // it will update the `$$.on_destroy` reference to `null`.
+                // the destructured on_destroy may still reference to the old array
+                if (component.$$.on_destroy) {
+                    component.$$.on_destroy.push(...new_on_destroy);
+                }
+                else {
+                    // Edge case - component was destroyed immediately,
+                    // most likely as a result of a binding initialising
+                    run_all(new_on_destroy);
+                }
+                component.$$.on_mount = [];
+            });
+        }
+        after_update.forEach(add_render_callback);
+    }
+    function destroy_component(component, detaching) {
+        const $$ = component.$$;
+        if ($$.fragment !== null) {
+            flush_render_callbacks($$.after_update);
+            run_all($$.on_destroy);
+            $$.fragment && $$.fragment.d(detaching);
+            // TODO null out other refs, including component.$$ (but need to
+            // preserve final state?)
+            $$.on_destroy = $$.fragment = null;
+            $$.ctx = [];
+        }
+    }
+    function make_dirty(component, i) {
+        if (component.$$.dirty[0] === -1) {
+            dirty_components.push(component);
+            schedule_update();
+            component.$$.dirty.fill(0);
+        }
+        component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
+    }
+    function init(component, options, instance, create_fragment, not_equal, props, append_styles, dirty = [-1]) {
+        const parent_component = current_component;
+        set_current_component(component);
+        const $$ = component.$$ = {
+            fragment: null,
+            ctx: [],
+            // state
+            props,
+            update: noop,
+            not_equal,
+            bound: blank_object(),
+            // lifecycle
+            on_mount: [],
+            on_destroy: [],
+            on_disconnect: [],
+            before_update: [],
+            after_update: [],
+            context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+            // everything else
+            callbacks: blank_object(),
+            dirty,
+            skip_bound: false,
+            root: options.target || parent_component.$$.root
+        };
+        append_styles && append_styles($$.root);
+        let ready = false;
+        $$.ctx = instance
+            ? instance(component, options.props || {}, (i, ret, ...rest) => {
+                const value = rest.length ? rest[0] : ret;
+                if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+                    if (!$$.skip_bound && $$.bound[i])
+                        $$.bound[i](value);
+                    if (ready)
+                        make_dirty(component, i);
+                }
+                return ret;
+            })
+            : [];
+        $$.update();
+        ready = true;
+        run_all($$.before_update);
+        // `false` as a special case of no DOM component
+        $$.fragment = create_fragment ? create_fragment($$.ctx) : false;
+        if (options.target) {
+            if (options.hydrate) {
+                const nodes = children(options.target);
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.l(nodes);
+                nodes.forEach(detach);
+            }
+            else {
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                $$.fragment && $$.fragment.c();
+            }
+            if (options.intro)
+                transition_in(component.$$.fragment);
+            mount_component(component, options.target, options.anchor, options.customElement);
+            flush();
+        }
+        set_current_component(parent_component);
+    }
+    /**
+     * Base class for Svelte components. Used when dev=false.
+     */
+    class SvelteComponent {
+        $destroy() {
+            destroy_component(this, 1);
+            this.$destroy = noop;
+        }
+        $on(type, callback) {
+            if (!is_function(callback)) {
+                return noop;
+            }
+            const callbacks = (this.$$.callbacks[type] || (this.$$.callbacks[type] = []));
+            callbacks.push(callback);
+            return () => {
+                const index = callbacks.indexOf(callback);
+                if (index !== -1)
+                    callbacks.splice(index, 1);
+            };
+        }
+        $set($$props) {
+            if (this.$$set && !is_empty($$props)) {
+                this.$$.skip_bound = true;
+                this.$$set($$props);
+                this.$$.skip_bound = false;
+            }
+        }
+    }
+
+    function dispatch_dev(type, detail) {
+        document.dispatchEvent(custom_event(type, Object.assign({ version: '3.59.1' }, detail), { bubbles: true }));
+    }
+    function append_dev(target, node) {
+        dispatch_dev('SvelteDOMInsert', { target, node });
+        append(target, node);
+    }
+    function insert_dev(target, node, anchor) {
+        dispatch_dev('SvelteDOMInsert', { target, node, anchor });
+        insert(target, node, anchor);
+    }
+    function detach_dev(node) {
+        dispatch_dev('SvelteDOMRemove', { node });
+        detach(node);
+    }
+    function listen_dev(node, event, handler, options, has_prevent_default, has_stop_propagation, has_stop_immediate_propagation) {
+        const modifiers = options === true ? ['capture'] : options ? Array.from(Object.keys(options)) : [];
+        if (has_prevent_default)
+            modifiers.push('preventDefault');
+        if (has_stop_propagation)
+            modifiers.push('stopPropagation');
+        if (has_stop_immediate_propagation)
+            modifiers.push('stopImmediatePropagation');
+        dispatch_dev('SvelteDOMAddEventListener', { node, event, handler, modifiers });
+        const dispose = listen(node, event, handler, options);
+        return () => {
+            dispatch_dev('SvelteDOMRemoveEventListener', { node, event, handler, modifiers });
+            dispose();
+        };
+    }
+    function attr_dev(node, attribute, value) {
+        attr(node, attribute, value);
+        if (value == null)
+            dispatch_dev('SvelteDOMRemoveAttribute', { node, attribute });
+        else
+            dispatch_dev('SvelteDOMSetAttribute', { node, attribute, value });
+    }
+    function validate_each_argument(arg) {
+        if (typeof arg !== 'string' && !(arg && typeof arg === 'object' && 'length' in arg)) {
+            let msg = '{#each} only iterates over array-like objects.';
+            if (typeof Symbol === 'function' && arg && Symbol.iterator in arg) {
+                msg += ' You can use a spread to convert this iterable into an array.';
+            }
+            throw new Error(msg);
+        }
+    }
+    function validate_slots(name, slot, keys) {
+        for (const slot_key of Object.keys(slot)) {
+            if (!~keys.indexOf(slot_key)) {
+                console.warn(`<${name}> received an unexpected slot "${slot_key}".`);
+            }
+        }
+    }
+    /**
+     * Base class for Svelte components with some minor dev-enhancements. Used when dev=true.
+     */
+    class SvelteComponentDev extends SvelteComponent {
+        constructor(options) {
+            if (!options || (!options.target && !options.$$inline)) {
+                throw new Error("'target' is a required option");
+            }
+            super();
+        }
+        $destroy() {
+            super.$destroy();
+            this.$destroy = () => {
+                console.warn('Component was already destroyed'); // eslint-disable-line no-console
+            };
+        }
+        $capture_state() { }
+        $inject_state() { }
+    }
+
+    function cubicInOut(t) {
+        return t < 0.5 ? 4.0 * t * t * t : 0.5 * Math.pow(2.0 * t - 2.0, 3.0) + 1.0;
+    }
+
+    function draw(node, { delay = 0, speed, duration, easing = cubicInOut } = {}) {
+        let len = node.getTotalLength();
+        const style = getComputedStyle(node);
+        if (style.strokeLinecap !== 'butt') {
+            len += parseInt(style.strokeWidth);
+        }
+        if (duration === undefined) {
+            if (speed === undefined) {
+                duration = 800;
+            }
+            else {
+                duration = len / speed;
+            }
+        }
+        else if (typeof duration === 'function') {
+            duration = duration(len);
+        }
+        return {
+            delay,
+            duration,
+            easing,
+            css: (_, u) => `
+			stroke-dasharray: ${len};
+			stroke-dashoffset: ${u * len};
+		`
+        };
+    }
+
+    /* src/App.svelte generated by Svelte v3.59.1 */
+
+    const { console: console_1 } = globals;
+    const file = "src/App.svelte";
+
+    function get_each_context(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[20] = list[i];
+    	child_ctx[22] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_1(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[23] = list[i];
+    	child_ctx[25] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_2(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[26] = list[i];
+    	child_ctx[23] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_3(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[22] = list[i];
+    	child_ctx[25] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_4(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[22] = list[i];
+    	child_ctx[23] = i;
+    	return child_ctx;
+    }
+
+    function get_each_context_5(ctx, list, i) {
+    	const child_ctx = ctx.slice();
+    	child_ctx[22] = list[i];
+    	child_ctx[23] = i;
+    	return child_ctx;
+    }
+
+    // (138:3) {#if b >= 0}
+    function create_if_block_1(ctx) {
+    	let line;
+    	let line_y__value_1;
+    	let line_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			line = svg_element("line");
+    			attr_dev(line, "x1", "300");
+    			attr_dev(line, "x2", "370");
+    			attr_dev(line, "y1", 64 + /*a*/ ctx[23] * 70);
+    			attr_dev(line, "y2", line_y__value_1 = 64 + /*b*/ ctx[22] * 70);
+    			attr_dev(line, "fill", "none");
+    			attr_dev(line, "stroke", "red");
+    			attr_dev(line, "stroke-width", "2px");
+    			add_location(line, file, 138, 4, 7280);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, line, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (!current || dirty & /*matching*/ 1 && line_y__value_1 !== (line_y__value_1 = 64 + /*b*/ ctx[22] * 70)) {
+    				attr_dev(line, "y2", line_y__value_1);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!current) return;
+    				if (!line_transition) line_transition = create_bidirectional_transition(line, draw, { duration: 500 }, true);
+    				line_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!line_transition) line_transition = create_bidirectional_transition(line, draw, { duration: 500 }, false);
+    			line_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(line);
+    			if (detaching && line_transition) line_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block_1.name,
+    		type: "if",
+    		source: "(138:3) {#if b >= 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (137:2) {#each matching as b, a}
+    function create_each_block_5(ctx) {
+    	let if_block_anchor;
+    	let current;
+    	let if_block = /*b*/ ctx[22] >= 0 && create_if_block_1(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*b*/ ctx[22] >= 0) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*matching*/ 1) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block_1(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_5.name,
+    		type: "each",
+    		source: "(137:2) {#each matching as b, a}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (152:3) {#if b >= 0}
+    function create_if_block(ctx) {
+    	let line;
+    	let line_y__value_1;
+    	let line_transition;
+    	let current;
+
+    	const block = {
+    		c: function create() {
+    			line = svg_element("line");
+    			attr_dev(line, "x1", "300");
+    			attr_dev(line, "x2", "370");
+    			attr_dev(line, "y1", 64 + /*a*/ ctx[23] * 70);
+    			attr_dev(line, "y2", line_y__value_1 = 64 + /*b*/ ctx[22] * 70);
+    			attr_dev(line, "fill", "none");
+    			attr_dev(line, "stroke", "red");
+    			attr_dev(line, "stroke-dasharray", "4");
+    			attr_dev(line, "stroke-width", "1px");
+    			add_location(line, file, 152, 4, 7536);
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, line, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (!current || dirty & /*instaMatching*/ 16 && line_y__value_1 !== (line_y__value_1 = 64 + /*b*/ ctx[22] * 70)) {
+    				attr_dev(line, "y2", line_y__value_1);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			add_render_callback(() => {
+    				if (!current) return;
+    				if (!line_transition) line_transition = create_bidirectional_transition(line, draw, { duration: 500 }, true);
+    				line_transition.run(1);
+    			});
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			if (!line_transition) line_transition = create_bidirectional_transition(line, draw, { duration: 500 }, false);
+    			line_transition.run(0);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(line);
+    			if (detaching && line_transition) line_transition.end();
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_if_block.name,
+    		type: "if",
+    		source: "(152:3) {#if b >= 0}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (151:2) {#each instaMatching as b, a}
+    function create_each_block_4(ctx) {
+    	let if_block_anchor;
+    	let current;
+    	let if_block = /*b*/ ctx[22] >= 0 && create_if_block(ctx);
+
+    	const block = {
+    		c: function create() {
+    			if (if_block) if_block.c();
+    			if_block_anchor = empty();
+    		},
+    		m: function mount(target, anchor) {
+    			if (if_block) if_block.m(target, anchor);
+    			insert_dev(target, if_block_anchor, anchor);
+    			current = true;
+    		},
+    		p: function update(ctx, dirty) {
+    			if (/*b*/ ctx[22] >= 0) {
+    				if (if_block) {
+    					if_block.p(ctx, dirty);
+
+    					if (dirty & /*instaMatching*/ 16) {
+    						transition_in(if_block, 1);
+    					}
+    				} else {
+    					if_block = create_if_block(ctx);
+    					if_block.c();
+    					transition_in(if_block, 1);
+    					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+    				}
+    			} else if (if_block) {
+    				group_outros();
+
+    				transition_out(if_block, 1, 1, () => {
+    					if_block = null;
+    				});
+
+    				check_outros();
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+    			transition_in(if_block);
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			transition_out(if_block);
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (if_block) if_block.d(detaching);
+    			if (detaching) detach_dev(if_block_anchor);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_4.name,
+    		type: "each",
+    		source: "(151:2) {#each instaMatching as b, a}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (176:5) {#each aPref as b, i (b)}
+    function create_each_block_3(key_1, ctx) {
+    	let div;
+    	let t0_value = th(/*i*/ ctx[25] + 1) + "";
+    	let t0;
+    	let html_tag;
+    	let raw_value = /*agentBimg*/ ctx[9](/*b*/ ctx[22]) + "";
+    	let t1;
+    	let mounted;
+    	let dispose;
+
+    	function click_handler() {
+    		return /*click_handler*/ ctx[13](/*a*/ ctx[23], /*b*/ ctx[22]);
+    	}
+
+    	function mouseenter_handler() {
+    		return /*mouseenter_handler*/ ctx[14](/*b*/ ctx[22]);
+    	}
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			div = element("div");
+    			t0 = text(t0_value);
+    			html_tag = new HtmlTag(false);
+    			t1 = space();
+    			html_tag.a = t1;
+    			attr_dev(div, "class", "agent agentB svelte-2hxq4s");
+    			toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			toggle_class(div, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] == /*b*/ ctx[22]);
+    			toggle_class(div, "unavailable", /*next*/ ctx[1][/*a*/ ctx[23]] > /*i*/ ctx[25]);
+    			add_location(div, file, 176, 6, 8012);
+    			this.first = div;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			html_tag.m(raw_value, div);
+    			append_dev(div, t1);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(div, "click", click_handler, false, false, false, false),
+    					listen_dev(div, "mouseenter", mouseenter_handler, false, false, false, false),
+    					listen_dev(div, "mouseleave", /*mouseleave_handler*/ ctx[15], false, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*currentA, aPrefs, currentB*/ 44) {
+    				toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*matching, aPrefs*/ 33) {
+    				toggle_class(div, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*next, aPrefs*/ 34) {
+    				toggle_class(div, "unavailable", /*next*/ ctx[1][/*a*/ ctx[23]] > /*i*/ ctx[25]);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_3.name,
+    		type: "each",
+    		source: "(176:5) {#each aPref as b, i (b)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (169:2) {#each aPrefs as aPref, a (aPref)}
+    function create_each_block_2(key_1, ctx) {
+    	let div2;
+    	let div0;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let t0;
+    	let div1;
+    	let raw_value = /*agentAimg*/ ctx[8](/*a*/ ctx[23]) + "";
+    	let t1;
+    	let mounted;
+    	let dispose;
+    	let each_value_3 = /*aPref*/ ctx[26];
+    	validate_each_argument(each_value_3);
+    	const get_key = ctx => /*b*/ ctx[22];
+    	validate_each_keys(ctx, each_value_3, get_each_context_3, get_key);
+
+    	for (let i = 0; i < each_value_3.length; i += 1) {
+    		let child_ctx = get_each_context_3(ctx, each_value_3, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block_3(key, child_ctx));
+    	}
+
+    	function mouseenter_handler_1() {
+    		return /*mouseenter_handler_1*/ ctx[16](/*a*/ ctx[23]);
+    	}
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			div2 = element("div");
+    			div0 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t0 = text("\n\t\t\t\to o o\n\t\t\t\t");
+    			div1 = element("div");
+    			t1 = space();
+    			attr_dev(div0, "class", "pref svelte-2hxq4s");
+    			add_location(div0, file, 174, 4, 7956);
+    			attr_dev(div1, "class", "agent agentA svelte-2hxq4s");
+    			toggle_class(div1, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] >= 0);
+    			toggle_class(div1, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23]);
+    			add_location(div1, file, 190, 4, 8404);
+    			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
+    			add_location(div2, file, 169, 3, 7837);
+    			this.first = div2;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				if (each_blocks[i]) {
+    					each_blocks[i].m(div0, null);
+    				}
+    			}
+
+    			append_dev(div2, t0);
+    			append_dev(div2, div1);
+    			div1.innerHTML = raw_value;
+    			append_dev(div2, t1);
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(div2, "mouseenter", mouseenter_handler_1, false, false, false, false),
+    					listen_dev(div2, "mouseleave", /*mouseleave_handler_1*/ ctx[17], false, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*currentA, aPrefs, currentB, matching, next, tryMarry, agentBimg, th*/ 1583) {
+    				each_value_3 = /*aPref*/ ctx[26];
+    				validate_each_argument(each_value_3);
+    				validate_each_keys(ctx, each_value_3, get_each_context_3, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value_3, each_1_lookup, div0, destroy_block, create_each_block_3, null, get_each_context_3);
+    			}
+
+    			if (dirty & /*matching, aPrefs*/ 33) {
+    				toggle_class(div1, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] >= 0);
+    			}
+
+    			if (dirty & /*currentA, aPrefs*/ 40) {
+    				toggle_class(div1, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23]);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div2);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_2.name,
+    		type: "each",
+    		source: "(169:2) {#each aPrefs as aPref, a (aPref)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (215:5) {#each bPref as a, i (a)}
+    function create_each_block_1(key_1, ctx) {
+    	let div;
+    	let t0_value = th(/*i*/ ctx[25] + 1) + "";
+    	let t0;
+    	let html_tag;
+    	let raw_value = /*agentAimg*/ ctx[8](/*a*/ ctx[23]) + "";
+    	let t1;
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			div = element("div");
+    			t0 = text(t0_value);
+    			html_tag = new HtmlTag(false);
+    			t1 = space();
+    			html_tag.a = t1;
+    			attr_dev(div, "class", "agent agentA svelte-2hxq4s");
+    			toggle_class(div, "happy", /*isHappy*/ ctx[7]() && /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			toggle_class(div, "married", getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22]) == /*a*/ ctx[23]);
+
+    			toggle_class(div, "unavailable", !isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22])
+    			? false
+    			: /*bPref*/ ctx[20].indexOf(getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22])) < /*bPref*/ ctx[20].indexOf(/*a*/ ctx[23]));
+
+    			add_location(div, file, 215, 6, 8940);
+    			this.first = div;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div, anchor);
+    			append_dev(div, t0);
+    			html_tag.m(raw_value, div);
+    			append_dev(div, t1);
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*isHappy, currentA, bPrefs, currentB*/ 204) {
+    				toggle_class(div, "happy", /*isHappy*/ ctx[7]() && /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*currentA, bPrefs, currentB*/ 76) {
+    				toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*getBPartner, matching, bPrefs*/ 65) {
+    				toggle_class(div, "married", getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22]) == /*a*/ ctx[23]);
+    			}
+
+    			if (dirty & /*isBMarried, matching, bPrefs, getBPartner*/ 65) {
+    				toggle_class(div, "unavailable", !isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22])
+    				? false
+    				: /*bPref*/ ctx[20].indexOf(getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22])) < /*bPref*/ ctx[20].indexOf(/*a*/ ctx[23]));
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block_1.name,
+    		type: "each",
+    		source: "(215:5) {#each bPref as a, i (a)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    // (203:2) {#each bPrefs as bPref, b (bPref)}
+    function create_each_block(key_1, ctx) {
+    	let div2;
+    	let div0;
+    	let raw_value = /*agentBimg*/ ctx[9](/*b*/ ctx[22]) + "";
+    	let t0;
+    	let div1;
+    	let each_blocks = [];
+    	let each_1_lookup = new Map();
+    	let t1;
+    	let each_value_1 = /*bPref*/ ctx[20];
+    	validate_each_argument(each_value_1);
+    	const get_key = ctx => /*a*/ ctx[23];
+    	validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
+
+    	for (let i = 0; i < each_value_1.length; i += 1) {
+    		let child_ctx = get_each_context_1(ctx, each_value_1, i);
+    		let key = get_key(child_ctx);
+    		each_1_lookup.set(key, each_blocks[i] = create_each_block_1(key, child_ctx));
+    	}
+
+    	const block = {
+    		key: key_1,
+    		first: null,
+    		c: function create() {
+    			div2 = element("div");
+    			div0 = element("div");
+    			t0 = text("\n\t\t\t\to o o\n\t\t\t\t");
+    			div1 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			t1 = space();
+    			attr_dev(div0, "class", "agent agentB svelte-2hxq4s");
+    			toggle_class(div0, "happy", /*isHappy*/ ctx[7]() && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			toggle_class(div0, "married", isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22]));
+    			toggle_class(div0, "current", /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			add_location(div0, file, 204, 4, 8670);
+    			attr_dev(div1, "class", "pref svelte-2hxq4s");
+    			add_location(div1, file, 213, 4, 8884);
+    			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
+    			add_location(div2, file, 203, 3, 8642);
+    			this.first = div2;
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, div2, anchor);
+    			append_dev(div2, div0);
+    			div0.innerHTML = raw_value;
+    			append_dev(div2, t0);
+    			append_dev(div2, div1);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				if (each_blocks[i]) {
+    					each_blocks[i].m(div1, null);
+    				}
+    			}
+
+    			append_dev(div2, t1);
+    		},
+    		p: function update(new_ctx, dirty) {
+    			ctx = new_ctx;
+
+    			if (dirty & /*isHappy, currentB, bPrefs*/ 196) {
+    				toggle_class(div0, "happy", /*isHappy*/ ctx[7]() && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*isBMarried, matching, bPrefs*/ 65) {
+    				toggle_class(div0, "married", isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22]));
+    			}
+
+    			if (dirty & /*currentB, bPrefs*/ 68) {
+    				toggle_class(div0, "current", /*currentB*/ ctx[2] == /*b*/ ctx[22]);
+    			}
+
+    			if (dirty & /*isHappy, currentA, bPrefs, currentB, getBPartner, matching, isBMarried, agentAimg, th*/ 461) {
+    				each_value_1 = /*bPref*/ ctx[20];
+    				validate_each_argument(each_value_1);
+    				validate_each_keys(ctx, each_value_1, get_each_context_1, get_key);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx, each_value_1, each_1_lookup, div1, destroy_block, create_each_block_1, null, get_each_context_1);
+    			}
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(div2);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_each_block.name,
+    		type: "each",
+    		source: "(203:2) {#each bPrefs as bPref, b (bPref)}",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    function create_fragment(ctx) {
+    	let main;
+    	let button0;
+    	let t1;
+    	let button1;
+    	let t3;
+    	let h1;
+    	let t5;
+    	let svg;
+    	let each0_anchor;
+    	let t6;
+    	let div0;
+    	let each_blocks_1 = [];
+    	let each2_lookup = new Map();
+    	let t7;
+    	let div1;
+    	let each_blocks = [];
+    	let each3_lookup = new Map();
+    	let current;
+    	let mounted;
+    	let dispose;
+    	let each_value_5 = /*matching*/ ctx[0];
+    	validate_each_argument(each_value_5);
+    	let each_blocks_3 = [];
+
+    	for (let i = 0; i < each_value_5.length; i += 1) {
+    		each_blocks_3[i] = create_each_block_5(get_each_context_5(ctx, each_value_5, i));
+    	}
+
+    	const out = i => transition_out(each_blocks_3[i], 1, 1, () => {
+    		each_blocks_3[i] = null;
+    	});
+
+    	let each_value_4 = /*instaMatching*/ ctx[4];
+    	validate_each_argument(each_value_4);
+    	let each_blocks_2 = [];
+
+    	for (let i = 0; i < each_value_4.length; i += 1) {
+    		each_blocks_2[i] = create_each_block_4(get_each_context_4(ctx, each_value_4, i));
+    	}
+
+    	const out_1 = i => transition_out(each_blocks_2[i], 1, 1, () => {
+    		each_blocks_2[i] = null;
+    	});
+
+    	let each_value_2 = /*aPrefs*/ ctx[5];
+    	validate_each_argument(each_value_2);
+    	const get_key = ctx => /*aPref*/ ctx[26];
+    	validate_each_keys(ctx, each_value_2, get_each_context_2, get_key);
+
+    	for (let i = 0; i < each_value_2.length; i += 1) {
+    		let child_ctx = get_each_context_2(ctx, each_value_2, i);
+    		let key = get_key(child_ctx);
+    		each2_lookup.set(key, each_blocks_1[i] = create_each_block_2(key, child_ctx));
+    	}
+
+    	let each_value = /*bPrefs*/ ctx[6];
+    	validate_each_argument(each_value);
+    	const get_key_1 = ctx => /*bPref*/ ctx[20];
+    	validate_each_keys(ctx, each_value, get_each_context, get_key_1);
+
+    	for (let i = 0; i < each_value.length; i += 1) {
+    		let child_ctx = get_each_context(ctx, each_value, i);
+    		let key = get_key_1(child_ctx);
+    		each3_lookup.set(key, each_blocks[i] = create_each_block(key, child_ctx));
+    	}
+
+    	const block = {
+    		c: function create() {
+    			main = element("main");
+    			button0 = element("button");
+    			button0.textContent = "Reset";
+    			t1 = space();
+    			button1 = element("button");
+    			button1.textContent = "Show an instability";
+    			t3 = space();
+    			h1 = element("h1");
+    			h1.textContent = "Gale-Shapley algorithm";
+    			t5 = space();
+    			svg = svg_element("svg");
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				each_blocks_3[i].c();
+    			}
+
+    			each0_anchor = empty();
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				each_blocks_2[i].c();
+    			}
+
+    			t6 = space();
+    			div0 = element("div");
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].c();
+    			}
+
+    			t7 = space();
+    			div1 = element("div");
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].c();
+    			}
+
+    			add_location(button0, file, 131, 1, 7032);
+    			add_location(button1, file, 132, 1, 7073);
+    			attr_dev(h1, "class", "svelte-2hxq4s");
+    			add_location(h1, file, 133, 1, 7138);
+    			attr_dev(svg, "width", 1000);
+    			attr_dev(svg, "height", 1000);
+    			attr_dev(svg, "viewBox", "0 0 " + 1000 + " " + 1000);
+    			attr_dev(svg, "class", "svelte-2hxq4s");
+    			add_location(svg, file, 135, 1, 7172);
+    			attr_dev(div0, "class", "family svelte-2hxq4s");
+    			add_location(div0, file, 167, 1, 7776);
+    			attr_dev(div1, "class", "family svelte-2hxq4s");
+    			add_location(div1, file, 201, 1, 8581);
+    			attr_dev(main, "class", "svelte-2hxq4s");
+    			add_location(main, file, 130, 0, 7024);
+    		},
+    		l: function claim(nodes) {
+    			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
+    		},
+    		m: function mount(target, anchor) {
+    			insert_dev(target, main, anchor);
+    			append_dev(main, button0);
+    			append_dev(main, t1);
+    			append_dev(main, button1);
+    			append_dev(main, t3);
+    			append_dev(main, h1);
+    			append_dev(main, t5);
+    			append_dev(main, svg);
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				if (each_blocks_3[i]) {
+    					each_blocks_3[i].m(svg, null);
+    				}
+    			}
+
+    			append_dev(svg, each0_anchor);
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				if (each_blocks_2[i]) {
+    					each_blocks_2[i].m(svg, null);
+    				}
+    			}
+
+    			append_dev(main, t6);
+    			append_dev(main, div0);
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				if (each_blocks_1[i]) {
+    					each_blocks_1[i].m(div0, null);
+    				}
+    			}
+
+    			append_dev(main, t7);
+    			append_dev(main, div1);
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				if (each_blocks[i]) {
+    					each_blocks[i].m(div1, null);
+    				}
+    			}
+
+    			current = true;
+
+    			if (!mounted) {
+    				dispose = [
+    					listen_dev(button0, "click", /*reset*/ ctx[11], false, false, false, false),
+    					listen_dev(button1, "click", /*showInstability*/ ctx[12], false, false, false, false)
+    				];
+
+    				mounted = true;
+    			}
+    		},
+    		p: function update(ctx, [dirty]) {
+    			if (dirty & /*matching*/ 1) {
+    				each_value_5 = /*matching*/ ctx[0];
+    				validate_each_argument(each_value_5);
+    				let i;
+
+    				for (i = 0; i < each_value_5.length; i += 1) {
+    					const child_ctx = get_each_context_5(ctx, each_value_5, i);
+
+    					if (each_blocks_3[i]) {
+    						each_blocks_3[i].p(child_ctx, dirty);
+    						transition_in(each_blocks_3[i], 1);
+    					} else {
+    						each_blocks_3[i] = create_each_block_5(child_ctx);
+    						each_blocks_3[i].c();
+    						transition_in(each_blocks_3[i], 1);
+    						each_blocks_3[i].m(svg, each0_anchor);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_5.length; i < each_blocks_3.length; i += 1) {
+    					out(i);
+    				}
+
+    				check_outros();
+    			}
+
+    			if (dirty & /*instaMatching*/ 16) {
+    				each_value_4 = /*instaMatching*/ ctx[4];
+    				validate_each_argument(each_value_4);
+    				let i;
+
+    				for (i = 0; i < each_value_4.length; i += 1) {
+    					const child_ctx = get_each_context_4(ctx, each_value_4, i);
+
+    					if (each_blocks_2[i]) {
+    						each_blocks_2[i].p(child_ctx, dirty);
+    						transition_in(each_blocks_2[i], 1);
+    					} else {
+    						each_blocks_2[i] = create_each_block_4(child_ctx);
+    						each_blocks_2[i].c();
+    						transition_in(each_blocks_2[i], 1);
+    						each_blocks_2[i].m(svg, null);
+    					}
+    				}
+
+    				group_outros();
+
+    				for (i = each_value_4.length; i < each_blocks_2.length; i += 1) {
+    					out_1(i);
+    				}
+
+    				check_outros();
+    			}
+
+    			if (dirty & /*currentA, aPrefs, matching, agentAimg, currentB, next, tryMarry, agentBimg, th*/ 1839) {
+    				each_value_2 = /*aPrefs*/ ctx[5];
+    				validate_each_argument(each_value_2);
+    				validate_each_keys(ctx, each_value_2, get_each_context_2, get_key);
+    				each_blocks_1 = update_keyed_each(each_blocks_1, dirty, get_key, 1, ctx, each_value_2, each2_lookup, div0, destroy_block, create_each_block_2, null, get_each_context_2);
+    			}
+
+    			if (dirty & /*bPrefs, isHappy, currentA, currentB, getBPartner, matching, isBMarried, agentAimg, th, agentBimg*/ 973) {
+    				each_value = /*bPrefs*/ ctx[6];
+    				validate_each_argument(each_value);
+    				validate_each_keys(ctx, each_value, get_each_context, get_key_1);
+    				each_blocks = update_keyed_each(each_blocks, dirty, get_key_1, 1, ctx, each_value, each3_lookup, div1, destroy_block, create_each_block, null, get_each_context);
+    			}
+    		},
+    		i: function intro(local) {
+    			if (current) return;
+
+    			for (let i = 0; i < each_value_5.length; i += 1) {
+    				transition_in(each_blocks_3[i]);
+    			}
+
+    			for (let i = 0; i < each_value_4.length; i += 1) {
+    				transition_in(each_blocks_2[i]);
+    			}
+
+    			current = true;
+    		},
+    		o: function outro(local) {
+    			each_blocks_3 = each_blocks_3.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks_3.length; i += 1) {
+    				transition_out(each_blocks_3[i]);
+    			}
+
+    			each_blocks_2 = each_blocks_2.filter(Boolean);
+
+    			for (let i = 0; i < each_blocks_2.length; i += 1) {
+    				transition_out(each_blocks_2[i]);
+    			}
+
+    			current = false;
+    		},
+    		d: function destroy(detaching) {
+    			if (detaching) detach_dev(main);
+    			destroy_each(each_blocks_3, detaching);
+    			destroy_each(each_blocks_2, detaching);
+
+    			for (let i = 0; i < each_blocks_1.length; i += 1) {
+    				each_blocks_1[i].d();
+    			}
+
+    			for (let i = 0; i < each_blocks.length; i += 1) {
+    				each_blocks[i].d();
+    			}
+
+    			mounted = false;
+    			run_all(dispose);
+    		}
+    	};
+
+    	dispatch_dev("SvelteRegisterBlock", {
+    		block,
+    		id: create_fragment.name,
+    		type: "component",
+    		source: "",
+    		ctx
+    	});
+
+    	return block;
+    }
+
+    const n = 5;
+
+    function randomArray(n) {
+    	const A = new Array(n).fill(0).map((v, i) => i);
+
+    	for (let i = n - 1; i >= 0; i--) {
+    		const j = Math.floor(Math.random() * i);
+    		[A[i], A[j]] = [A[j], A[i]];
+    	}
+
+    	console.log(A);
+    	return A;
+    }
+
+    function beep() {
+    	const snd = new Audio("data:audio/wav;base64,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qJrx4KOQjahZxWbcZgztj2c49nKmkId44S71j0c8eV9yDK6uPRzx5X18eDvjvQ6yKo9ZSS6l//8elePK/Lf//IInrOF/FvDoADYAGBMGb7FtErm5MXMlmPAJQVgWta7Zx2go+8xJ0UiCb8LHHdftWyLJE0QIAIsI+UbXu67dZMjmgDGCGl1H+vpF4NSDckSIkk7Vd+sxEhBQMRU8j/12UIRhzSaUdQ+rQU5kGeFxm+hb1oh6pWWmv3uvmReDl0UnvtapVaIzo1jZbf/pD6ElLqSX+rUmOQNpJFa/r+sa4e/pBlAABoAAAAA3CUgShLdGIxsY7AUABPRrgCABdDuQ5GC7DqPQCgbbJUAoRSUj+NIEig0YfyWUho1VBBBA//uQZB4ABZx5zfMakeAAAAmwAAAAF5F3P0w9GtAAACfAAAAAwLhMDmAYWMgVEG1U0FIGCBgXBXAtfMH10000EEEEEECUBYln03TTTdNBDZopopYvrTTdNa325mImNg3TTPV9q3pmY0xoO6bv3r00y+IDGid/9aaaZTGMuj9mpu9Mpio1dXrr5HERTZSmqU36A3CumzN/9Robv/Xx4v9ijkSRSNLQhAWumap82WRSBUqXStV/YcS+XVLnSS+WLDroqArFkMEsAS+eWmrUzrO0oEmE40RlMZ5+ODIkAyKAGUwZ3mVKmcamcJnMW26MRPgUw6j+LkhyHGVGYjSUUKNpuJUQoOIAyDvEyG8S5yfK6dhZc0Tx1KI/gviKL6qvvFs1+bWtaz58uUNnryq6kt5RzOCkPWlVqVX2a/EEBUdU1KrXLf40GoiiFXK///qpoiDXrOgqDR38JB0bw7SoL+ZB9o1RCkQjQ2CBYZKd/+VJxZRRZlqSkKiws0WFxUyCwsKiMy7hUVFhIaCrNQsKkTIsLivwKKigsj8XYlwt/WKi2N4d//uQRCSAAjURNIHpMZBGYiaQPSYyAAABLAAAAAAAACWAAAAApUF/Mg+0aohSIRobBAsMlO//Kk4soosy1JSFRYWaLC4qZBYWFRGZdwqKiwkNBVmoWFSJkWFxX4FFRQWR+LsS4W/rFRb/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////VEFHAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAU291bmRib3kuZGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMjAwNGh0dHA6Ly93d3cuc291bmRib3kuZGUAAAAAAAAAACU=");
+    	snd.play();
+    }
+
+    function getBPartner(matching, b) {
+    	return matching.indexOf(b);
+    }
+
+    function isAMarried(matching, a) {
+    	return matching[a] != -1;
+    }
+
+    function isBMarried(matching, b) {
+    	return getBPartner(matching, b) >= 0;
+    }
+
+    function th(n) {
+    	if (n == 1) return "1st";
+    	if (n == 2) return "2nd";
+    	return n + "th";
+    }
+
+    function instance($$self, $$props, $$invalidate) {
+    	let { $$slots: slots = {}, $$scope } = $$props;
+    	validate_slots('App', slots, []);
+    	let aPrefs = new Array(n).fill(0).map(() => randomArray(n));
+    	let bPrefs = new Array(n).fill(0).map(() => randomArray(n));
+    	beep();
+    	let matching = new Array(n).fill(-1); // matching[a] = -1 if a is single and = its partner b otherwise
+    	let next = new Array(n).fill(0);
+    	let currentB = -1;
+    	let currentA = -1;
+    	let instaMatching = [];
+
+    	function isHappy() {
+    		if (currentA < 0) return false;
+    		if (currentB < 0) return false;
+    		const a = currentA;
+    		const b = currentB;
+    		const a1 = getBPartner(matching, b);
+    		if (a1 == -1) return true;
+    		return bPrefs[b].indexOf(a) < bPrefs[b].indexOf(a1);
+    	}
+
+    	let iImages = 1;
+
+    	const images = [
+    		[
+    			["1F43C", "1F431", "1F437", "1F42E", "1F43B"],
+    			["1F996", "1F438", "1F424", "1F414", "1F997"]
+    		],
+    		[
+    			["1F43C", "1F431", "1F437", "1F42E", "1F43B"],
+    			["1F3EB", "1F3DB", "1F3EC", "1F3E1", "1F3F0"]
+    		]
+    	];
+
+    	function agentAimg(a) {
+    		return `<img src='https://openmoji.org/data/color/svg/${images[iImages][0][a]}.svg'/>`;
+    	}
+
+    	function agentBimg(b) {
+    		return `<img src='https://openmoji.org/data/color/svg/${images[iImages][1][b]}.svg'/>`;
+    	}
+
+    	function tryMarry(a, b) {
+    		if (isAMarried(matching, a) || b != aPrefs[a][next[a]]) {
+    			console.log(matching[a]);
+    			beep();
+    			return;
+    		}
+
+    		$$invalidate(1, next[a]++, next);
+    		const a1 = getBPartner(matching, b);
+
+    		if (a1 == -1) $$invalidate(0, matching[a] = b, matching); else if (bPrefs[b].indexOf(a) < bPrefs[b].indexOf(a1)) {
+    			$$invalidate(0, matching[a] = b, matching);
+    			$$invalidate(0, matching[a1] = -1, matching);
+    		}
+
+    		$$invalidate(0, matching);
+    		$$invalidate(1, next);
+    	}
+
+    	function reset() {
+    		$$invalidate(0, matching = new Array(n).fill(-1)); // matching[a] = -1 if a is single and = its partner b otherwise
+    		$$invalidate(1, next = new Array(n).fill(0));
+    		$$invalidate(2, currentB = -1);
+    		$$invalidate(3, currentA = -1);
+    		$$invalidate(4, instaMatching = []);
+    	}
+
+    	function showInstability() {
+    		reset();
+
+    		for (let a = 0; a < aPrefs.length; a++) for (let b = 0; b < aPrefs.length; b++) for (let a2 = 0; a2 < aPrefs.length; a2++) for (let b2 = 0; b2 < aPrefs.length; b2++) {
+    			console.log(aPrefs[a].indexOf(parseInt(b2)));
+
+    			if (aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) && aPrefs[b2].indexOf(a) < aPrefs[b2].indexOf(a2)) {
+    				$$invalidate(0, matching[a] = b, matching);
+    				$$invalidate(0, matching[a2] = b2, matching);
+    				$$invalidate(0, matching);
+    				$$invalidate(4, instaMatching[a] = b2, instaMatching);
+    				return;
+    			}
+    		}
+    	}
+
+    	reset();
+    	const writable_props = [];
+
+    	Object.keys($$props).forEach(key => {
+    		if (!~writable_props.indexOf(key) && key.slice(0, 2) !== '$$' && key !== 'slot') console_1.warn(`<App> was created with unknown prop '${key}'`);
+    	});
+
+    	const click_handler = (a, b) => tryMarry(a, b);
+    	const mouseenter_handler = b => $$invalidate(2, currentB = b);
+    	const mouseleave_handler = () => $$invalidate(2, currentB = -1);
+    	const mouseenter_handler_1 = a => $$invalidate(3, currentA = a);
+    	const mouseleave_handler_1 = () => $$invalidate(3, currentA = -1);
+
+    	$$self.$capture_state = () => ({
+    		draw,
+    		n,
+    		randomArray,
+    		aPrefs,
+    		bPrefs,
+    		beep,
+    		matching,
+    		next,
+    		currentB,
+    		currentA,
+    		instaMatching,
+    		isHappy,
+    		iImages,
+    		images,
+    		agentAimg,
+    		agentBimg,
+    		getBPartner,
+    		isAMarried,
+    		isBMarried,
+    		tryMarry,
+    		th,
+    		reset,
+    		showInstability
+    	});
+
+    	$$self.$inject_state = $$props => {
+    		if ('aPrefs' in $$props) $$invalidate(5, aPrefs = $$props.aPrefs);
+    		if ('bPrefs' in $$props) $$invalidate(6, bPrefs = $$props.bPrefs);
+    		if ('matching' in $$props) $$invalidate(0, matching = $$props.matching);
+    		if ('next' in $$props) $$invalidate(1, next = $$props.next);
+    		if ('currentB' in $$props) $$invalidate(2, currentB = $$props.currentB);
+    		if ('currentA' in $$props) $$invalidate(3, currentA = $$props.currentA);
+    		if ('instaMatching' in $$props) $$invalidate(4, instaMatching = $$props.instaMatching);
+    		if ('iImages' in $$props) iImages = $$props.iImages;
+    	};
+
+    	if ($$props && "$$inject" in $$props) {
+    		$$self.$inject_state($$props.$$inject);
+    	}
+
+    	return [
+    		matching,
+    		next,
+    		currentB,
+    		currentA,
+    		instaMatching,
+    		aPrefs,
+    		bPrefs,
+    		isHappy,
+    		agentAimg,
+    		agentBimg,
+    		tryMarry,
+    		reset,
+    		showInstability,
+    		click_handler,
+    		mouseenter_handler,
+    		mouseleave_handler,
+    		mouseenter_handler_1,
+    		mouseleave_handler_1
+    	];
+    }
+
+    class App extends SvelteComponentDev {
+    	constructor(options) {
+    		super(options);
+    		init(this, options, instance, create_fragment, safe_not_equal, {});
+
+    		dispatch_dev("SvelteRegisterComponent", {
+    			component: this,
+    			tagName: "App",
+    			options,
+    			id: create_fragment.name
+    		});
+    	}
+    }
+
+    const app = new App({
+    	target: document.body,
+    	props: {
+    		name: 'world'
+    	}
+    });
+
+    return app;
+
+})();
 //# sourceMappingURL=bundle.js.map
