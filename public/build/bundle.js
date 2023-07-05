@@ -894,7 +894,7 @@ var app = (function () {
     	return child_ctx;
     }
 
-    // (140:3) {#if b >= 0}
+    // (141:4) {#if b >= 0}
     function create_if_block_1(ctx) {
     	let line;
     	let line_y__value_1;
@@ -911,7 +911,7 @@ var app = (function () {
     			attr_dev(line, "fill", "none");
     			attr_dev(line, "stroke", "red");
     			attr_dev(line, "stroke-width", "2px");
-    			add_location(line, file, 140, 4, 7363);
+    			add_location(line, file, 141, 5, 7393);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, line, anchor);
@@ -948,14 +948,14 @@ var app = (function () {
     		block,
     		id: create_if_block_1.name,
     		type: "if",
-    		source: "(140:3) {#if b >= 0}",
+    		source: "(141:4) {#if b >= 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (139:2) {#each matching as b, a}
+    // (140:3) {#each matching as b, a}
     function create_each_block_5(ctx) {
     	let if_block_anchor;
     	let current;
@@ -1014,14 +1014,14 @@ var app = (function () {
     		block,
     		id: create_each_block_5.name,
     		type: "each",
-    		source: "(139:2) {#each matching as b, a}",
+    		source: "(140:3) {#each matching as b, a}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (154:3) {#if b >= 0}
+    // (155:4) {#if b >= 0}
     function create_if_block(ctx) {
     	let line;
     	let line_y__value_1;
@@ -1039,7 +1039,7 @@ var app = (function () {
     			attr_dev(line, "stroke", "red");
     			attr_dev(line, "stroke-dasharray", "4");
     			attr_dev(line, "stroke-width", "1px");
-    			add_location(line, file, 154, 4, 7619);
+    			add_location(line, file, 155, 5, 7663);
     		},
     		m: function mount(target, anchor) {
     			insert_dev(target, line, anchor);
@@ -1076,14 +1076,14 @@ var app = (function () {
     		block,
     		id: create_if_block.name,
     		type: "if",
-    		source: "(154:3) {#if b >= 0}",
+    		source: "(155:4) {#if b >= 0}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (153:2) {#each instaMatching as b, a}
+    // (154:3) {#each instaMatching as b, a}
     function create_each_block_4(ctx) {
     	let if_block_anchor;
     	let current;
@@ -1142,14 +1142,14 @@ var app = (function () {
     		block,
     		id: create_each_block_4.name,
     		type: "each",
-    		source: "(153:2) {#each instaMatching as b, a}",
+    		source: "(154:3) {#each instaMatching as b, a}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (178:5) {#each aPref as b, i (b)}
+    // (179:6) {#each aPref as b, i (b)}
     function create_each_block_3(key_1, ctx) {
     	let div;
     	let t0_value = th(/*i*/ ctx[25] + 1) + "";
@@ -1177,11 +1177,11 @@ var app = (function () {
     			html_tag = new HtmlTag(false);
     			t1 = space();
     			html_tag.a = t1;
-    			attr_dev(div, "class", "agent agentB svelte-2hxq4s");
+    			attr_dev(div, "class", "agent agentB svelte-rlxtj5");
     			toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] == /*b*/ ctx[22]);
     			toggle_class(div, "unavailable", /*next*/ ctx[1][/*a*/ ctx[23]] > /*i*/ ctx[25]);
-    			add_location(div, file, 178, 6, 8095);
+    			add_location(div, file, 179, 7, 8162);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -1226,14 +1226,14 @@ var app = (function () {
     		block,
     		id: create_each_block_3.name,
     		type: "each",
-    		source: "(178:5) {#each aPref as b, i (b)}",
+    		source: "(179:6) {#each aPref as b, i (b)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (171:2) {#each aPrefs as aPref, a (aPref)}
+    // (172:3) {#each aPrefs as aPref, a (aPref)}
     function create_each_block_2(key_1, ctx) {
     	let div2;
     	let div0;
@@ -1271,17 +1271,17 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			t0 = text("\n\t\t\t\to o o\n\t\t\t\t");
+    			t0 = text("\n\t\t\t\t\to o o\n\t\t\t\t\t");
     			div1 = element("div");
     			t1 = space();
-    			attr_dev(div0, "class", "pref svelte-2hxq4s");
-    			add_location(div0, file, 176, 4, 8039);
-    			attr_dev(div1, "class", "agent agentA svelte-2hxq4s");
+    			attr_dev(div0, "class", "pref svelte-rlxtj5");
+    			add_location(div0, file, 177, 5, 8104);
+    			attr_dev(div1, "class", "agent agentA svelte-rlxtj5");
     			toggle_class(div1, "married", /*matching*/ ctx[0][/*a*/ ctx[23]] >= 0);
     			toggle_class(div1, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23]);
-    			add_location(div1, file, 192, 4, 8487);
-    			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
-    			add_location(div2, file, 171, 3, 7920);
+    			add_location(div1, file, 193, 5, 8568);
+    			attr_dev(div2, "class", "agentPref svelte-rlxtj5");
+    			add_location(div2, file, 172, 4, 7980);
     			this.first = div2;
     		},
     		m: function mount(target, anchor) {
@@ -1342,14 +1342,14 @@ var app = (function () {
     		block,
     		id: create_each_block_2.name,
     		type: "each",
-    		source: "(171:2) {#each aPrefs as aPref, a (aPref)}",
+    		source: "(172:3) {#each aPrefs as aPref, a (aPref)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (217:5) {#each bPref as a, i (a)}
+    // (218:6) {#each bPref as a, i (a)}
     function create_each_block_1(key_1, ctx) {
     	let div;
     	let t0_value = th(/*i*/ ctx[25] + 1) + "";
@@ -1367,7 +1367,7 @@ var app = (function () {
     			html_tag = new HtmlTag(false);
     			t1 = space();
     			html_tag.a = t1;
-    			attr_dev(div, "class", "agent agentA svelte-2hxq4s");
+    			attr_dev(div, "class", "agent agentA svelte-rlxtj5");
     			toggle_class(div, "happy", /*isHappy*/ ctx[7]() && /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div, "current", /*currentA*/ ctx[3] == /*a*/ ctx[23] && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div, "married", getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22]) == /*a*/ ctx[23]);
@@ -1376,7 +1376,7 @@ var app = (function () {
     			? false
     			: /*bPref*/ ctx[20].indexOf(getBPartner(/*matching*/ ctx[0], /*b*/ ctx[22])) < /*bPref*/ ctx[20].indexOf(/*a*/ ctx[23]));
 
-    			add_location(div, file, 217, 6, 9023);
+    			add_location(div, file, 218, 7, 9128);
     			this.first = div;
     		},
     		m: function mount(target, anchor) {
@@ -1415,14 +1415,14 @@ var app = (function () {
     		block,
     		id: create_each_block_1.name,
     		type: "each",
-    		source: "(217:5) {#each bPref as a, i (a)}",
+    		source: "(218:6) {#each bPref as a, i (a)}",
     		ctx
     	});
 
     	return block;
     }
 
-    // (205:2) {#each bPrefs as bPref, b (bPref)}
+    // (206:3) {#each bPrefs as bPref, b (bPref)}
     function create_each_block(key_1, ctx) {
     	let div2;
     	let div0;
@@ -1449,7 +1449,7 @@ var app = (function () {
     		c: function create() {
     			div2 = element("div");
     			div0 = element("div");
-    			t0 = text("\n\t\t\t\to o o\n\t\t\t\t");
+    			t0 = text("\n\t\t\t\t\to o o\n\t\t\t\t\t");
     			div1 = element("div");
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -1457,15 +1457,15 @@ var app = (function () {
     			}
 
     			t1 = space();
-    			attr_dev(div0, "class", "agent agentB svelte-2hxq4s");
+    			attr_dev(div0, "class", "agent agentB svelte-rlxtj5");
     			toggle_class(div0, "happy", /*isHappy*/ ctx[7]() && /*currentB*/ ctx[2] == /*b*/ ctx[22]);
     			toggle_class(div0, "married", isBMarried(/*matching*/ ctx[0], /*b*/ ctx[22]));
     			toggle_class(div0, "current", /*currentB*/ ctx[2] == /*b*/ ctx[22]);
-    			add_location(div0, file, 206, 4, 8753);
-    			attr_dev(div1, "class", "pref svelte-2hxq4s");
-    			add_location(div1, file, 215, 4, 8967);
-    			attr_dev(div2, "class", "agentPref svelte-2hxq4s");
-    			add_location(div2, file, 205, 3, 8725);
+    			add_location(div0, file, 207, 5, 8847);
+    			attr_dev(div1, "class", "pref svelte-rlxtj5");
+    			add_location(div1, file, 216, 5, 9070);
+    			attr_dev(div2, "class", "agentPref svelte-rlxtj5");
+    			add_location(div2, file, 206, 4, 8818);
     			this.first = div2;
     		},
     		m: function mount(target, anchor) {
@@ -1518,7 +1518,7 @@ var app = (function () {
     		block,
     		id: create_each_block.name,
     		type: "each",
-    		source: "(205:2) {#each bPrefs as bPref, b (bPref)}",
+    		source: "(206:3) {#each bPrefs as bPref, b (bPref)}",
     		ctx
     	});
 
@@ -1533,6 +1533,7 @@ var app = (function () {
     	let t3;
     	let h1;
     	let t5;
+    	let div2;
     	let svg;
     	let each0_anchor;
     	let t6;
@@ -1604,6 +1605,7 @@ var app = (function () {
     			h1 = element("h1");
     			h1.textContent = "Gale-Shapley algorithm";
     			t5 = space();
+    			div2 = element("div");
     			svg = svg_element("svg");
 
     			for (let i = 0; i < each_blocks_3.length; i += 1) {
@@ -1630,21 +1632,24 @@ var app = (function () {
     				each_blocks[i].c();
     			}
 
-    			add_location(button0, file, 133, 1, 7115);
-    			add_location(button1, file, 134, 1, 7156);
-    			attr_dev(h1, "class", "svelte-2hxq4s");
-    			add_location(h1, file, 135, 1, 7221);
+    			add_location(button0, file, 133, 1, 7118);
+    			add_location(button1, file, 134, 1, 7159);
+    			attr_dev(h1, "class", "svelte-rlxtj5");
+    			add_location(h1, file, 135, 1, 7224);
     			attr_dev(svg, "width", 1000);
     			attr_dev(svg, "height", 1000);
     			attr_dev(svg, "viewBox", "0 0 " + 1000 + " " + 1000);
-    			attr_dev(svg, "class", "svelte-2hxq4s");
-    			add_location(svg, file, 137, 1, 7255);
-    			attr_dev(div0, "class", "family svelte-2hxq4s");
-    			add_location(div0, file, 169, 1, 7859);
-    			attr_dev(div1, "class", "family svelte-2hxq4s");
-    			add_location(div1, file, 203, 1, 8664);
-    			attr_dev(main, "class", "svelte-2hxq4s");
-    			add_location(main, file, 132, 0, 7107);
+    			attr_dev(svg, "class", "svelte-rlxtj5");
+    			add_location(svg, file, 138, 2, 7282);
+    			attr_dev(div0, "class", "family svelte-rlxtj5");
+    			add_location(div0, file, 170, 2, 7917);
+    			attr_dev(div1, "class", "family svelte-rlxtj5");
+    			add_location(div1, file, 204, 2, 8755);
+    			attr_dev(div2, "id", "playground");
+    			attr_dev(div2, "class", "svelte-rlxtj5");
+    			add_location(div2, file, 137, 1, 7258);
+    			attr_dev(main, "class", "svelte-rlxtj5");
+    			add_location(main, file, 132, 0, 7110);
     		},
     		l: function claim(nodes) {
     			throw new Error("options.hydrate only works if the component was compiled with the `hydratable: true` option");
@@ -1657,7 +1662,8 @@ var app = (function () {
     			append_dev(main, t3);
     			append_dev(main, h1);
     			append_dev(main, t5);
-    			append_dev(main, svg);
+    			append_dev(main, div2);
+    			append_dev(div2, svg);
 
     			for (let i = 0; i < each_blocks_3.length; i += 1) {
     				if (each_blocks_3[i]) {
@@ -1673,8 +1679,8 @@ var app = (function () {
     				}
     			}
 
-    			append_dev(main, t6);
-    			append_dev(main, div0);
+    			append_dev(div2, t6);
+    			append_dev(div2, div0);
 
     			for (let i = 0; i < each_blocks_1.length; i += 1) {
     				if (each_blocks_1[i]) {
@@ -1682,8 +1688,8 @@ var app = (function () {
     				}
     			}
 
-    			append_dev(main, t7);
-    			append_dev(main, div1);
+    			append_dev(div2, t7);
+    			append_dev(div2, div1);
 
     			for (let i = 0; i < each_blocks.length; i += 1) {
     				if (each_blocks[i]) {

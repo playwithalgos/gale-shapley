@@ -116,9 +116,9 @@
 							aPrefs[a].indexOf(b2) < aPrefs[a].indexOf(b) && //a prefers b2 to b
 							bPrefs[b2].indexOf(a) < bPrefs[b2].indexOf(a2) //b2 prefers a to a2
 						) {
-							console.log(a, b, a2, b2)
-							console.log(aPrefs[a])
-							console.log(bPrefs[b2])
+							console.log(a, b, a2, b2);
+							console.log(aPrefs[a]);
+							console.log(bPrefs[b2]);
 							matching[a] = b;
 							matching[a2] = b2;
 							matching = matching;
@@ -135,104 +135,106 @@
 	<button on:click={showInstability}>Show an instability</button>
 	<h1>Gale-Shapley algorithm</h1>
 
-	<svg width={1000} height={1000} viewBox="0 0 {1000} {1000}">
-		{#each matching as b, a}
-			{#if b >= 0}
-				<line
-					transition:draw={{ duration: 500 }}
-					x1="300"
-					x2="370"
-					y1={64 + a * 70}
-					y2={64 + b * 70}
-					fill="none"
-					stroke="red"
-					stroke-width="2px"
-				/>
-			{/if}
-		{/each}
-		{#each instaMatching as b, a}
-			{#if b >= 0}
-				<line
-					transition:draw={{ duration: 500 }}
-					x1="300"
-					x2="370"
-					y1={64 + a * 70}
-					y2={64 + b * 70}
-					fill="none"
-					stroke="red"
-					stroke-dasharray="4"
-					stroke-width="1px"
-				/>
-			{/if}
-		{/each}
-	</svg>
+	<div id="playground">
+		<svg width={1000} height={1000} viewBox="0 0 {1000} {1000}">
+			{#each matching as b, a}
+				{#if b >= 0}
+					<line
+						transition:draw={{ duration: 500 }}
+						x1="300"
+						x2="370"
+						y1={64 + a * 70}
+						y2={64 + b * 70}
+						fill="none"
+						stroke="red"
+						stroke-width="2px"
+					/>
+				{/if}
+			{/each}
+			{#each instaMatching as b, a}
+				{#if b >= 0}
+					<line
+						transition:draw={{ duration: 500 }}
+						x1="300"
+						x2="370"
+						y1={64 + a * 70}
+						y2={64 + b * 70}
+						fill="none"
+						stroke="red"
+						stroke-dasharray="4"
+						stroke-width="1px"
+					/>
+				{/if}
+			{/each}
+		</svg>
 
-	<div class="family">
-		{#each aPrefs as aPref, a (aPref)}
-			<div
-				class="agentPref"
-				on:mouseenter={() => (currentA = a)}
-				on:mouseleave={() => (currentA = -1)}
-			>
-				<div class="pref">
-					{#each aPref as b, i (b)}
-						<div
-							class="agent agentB"
-							class:current={currentA == a && currentB == b}
-							class:married={matching[a] == b}
-							class:unavailable={next[a] > i}
-							on:click={() => tryMarry(a, b)}
-							on:mouseenter={() => (currentB = b)}
-							on:mouseleave={() => (currentB = -1)}
-						>
-							{th(i + 1)}{@html agentBimg(b)}
-						</div>
-					{/each}
-				</div>
-				o o o
+		<div class="family">
+			{#each aPrefs as aPref, a (aPref)}
 				<div
-					class="agent agentA"
-					class:married={matching[a] >= 0}
-					class:current={currentA == a}
+					class="agentPref"
+					on:mouseenter={() => (currentA = a)}
+					on:mouseleave={() => (currentA = -1)}
 				>
-					{@html agentAimg(a)}
+					<div class="pref">
+						{#each aPref as b, i (b)}
+							<div
+								class="agent agentB"
+								class:current={currentA == a && currentB == b}
+								class:married={matching[a] == b}
+								class:unavailable={next[a] > i}
+								on:click={() => tryMarry(a, b)}
+								on:mouseenter={() => (currentB = b)}
+								on:mouseleave={() => (currentB = -1)}
+							>
+								{th(i + 1)}{@html agentBimg(b)}
+							</div>
+						{/each}
+					</div>
+					o o o
+					<div
+						class="agent agentA"
+						class:married={matching[a] >= 0}
+						class:current={currentA == a}
+					>
+						{@html agentAimg(a)}
+					</div>
 				</div>
-			</div>
-		{/each}
-	</div>
+			{/each}
+		</div>
 
-	<div class="family">
-		{#each bPrefs as bPref, b (bPref)}
-			<div class="agentPref">
-				<div
-					class="agent agentB"
-					class:happy={isHappy() && currentB == b}
-					class:married={isBMarried(matching, b)}
-					class:current={currentB == b}
-				>
-					{@html agentBimg(b)}
+		<div class="family">
+			{#each bPrefs as bPref, b (bPref)}
+				<div class="agentPref">
+					<div
+						class="agent agentB"
+						class:happy={isHappy() && currentB == b}
+						class:married={isBMarried(matching, b)}
+						class:current={currentB == b}
+					>
+						{@html agentBimg(b)}
+					</div>
+					o o o
+					<div class="pref">
+						{#each bPref as a, i (a)}
+							<div
+								class="agent agentA"
+								class:happy={isHappy() &&
+									currentA == a &&
+									currentB == b}
+								class:current={currentA == a && currentB == b}
+								class:married={getBPartner(matching, b) == a}
+								class:unavailable={!isBMarried(matching, b)
+									? false
+									: bPref.indexOf(getBPartner(matching, b)) <
+									  bPref.indexOf(a)}
+							>
+								{th(i + 1)}{@html agentAimg(a)}
+							</div>
+						{/each}
+					</div>
 				</div>
-				o o o
-				<div class="pref">
-					{#each bPref as a, i (a)}
-						<div
-							class="agent agentA"
-							class:happy={isHappy() &&
-								currentA == a &&
-								currentB == b}
-							class:current={currentA == a && currentB == b}
-							class:married={getBPartner(matching, b) == a}
-							class:unavailable={!isBMarried(matching, b)
-								? false
-								: bPref.indexOf(getBPartner(matching, b)) <
-								  bPref.indexOf(a)}
-						>
-							{th(i + 1)}{@html agentAimg(a)}
-						</div>
-					{/each}
-				</div>
-			</div>
-		{/each}
+			{/each}
+		</div>
 	</div>
 </main>
 
@@ -271,6 +273,7 @@
 		border: solid 2px black;
 		border-radius: 8px;
 		display: inline-block;
+		white-space: normal;
 	}
 
 	.agentPref {
@@ -314,5 +317,11 @@
 	svg {
 		position: absolute;
 		pointer-events: none;
+	}
+
+	#playground {
+		display:inline;
+		overflow: visible;
+		white-space: nowrap;
 	}
 </style>
