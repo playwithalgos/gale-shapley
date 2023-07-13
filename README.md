@@ -4,7 +4,7 @@
 
 ![image](https://github.com/playwithalgos/gale-shapley/assets/43071857/811e61b0-2e80-4c1c-8f7f-8eb1d3247bc3)
 
-
+Vidéo: https://youtu.be/gws0C1aWiVc 
 # svelte app
 
 This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
